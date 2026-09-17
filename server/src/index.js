@@ -1,9 +1,11 @@
-import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
+import { createApp } from './app.js';
 import { config } from './config.js';
-import { router } from './routes.js';
 import { query } from './db.js';
+
+// Long-running entry point only — `npm run dev:server` locally, and the Railway
+// host if that is still in use. Vercel never reaches this file: api/index.js
+// builds the app from app.js and the platform owns the listener, which is why
+// the heartbeat below is safe to keep here.
 
 // Heartbeat: keeps the Neon compute awake so the first request after idle
 // doesn't pay a 4-10s cold-start (free-tier Neon suspends after ~5 min idle).
@@ -11,22 +13,7 @@ setInterval(() => {
   query('SELECT 1').catch(() => {});
 }, 2 * 60 * 1000);
 
-const app = express();
-app.disable('x-powered-by');
-app.use(helmet());
-app.use(cors({ origin: config.frontendOrigins }));
-app.use(express.json());
-
-app.use('/api', router);
-
-// 404 for unknown API routes.
-app.use('/api', (_req, res) => res.status(404).json({ error: 'Not found.' }));
-
-// Centralized error handler.
-app.use((err, _req, res, _next) => {
-  console.error('unhandled error:', err);
-  return res.status(500).json({ error: 'Internal server error.' });
-});
+const app = createApp();
 
 app.listen(config.port, () => {
   console.log(`VOID server listening on http://localhost:${config.port}`);

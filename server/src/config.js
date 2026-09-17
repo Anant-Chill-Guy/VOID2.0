@@ -8,8 +8,9 @@ dotenv.config({ path: path.resolve(__dirname, '../.env') });
 const required = ['DATABASE_URL', 'ADMIN_PASSWORD', 'AUTH_SECRET'];
 const missing = required.filter((key) => !process.env[key]);
 if (missing.length) {
-  console.error(`Missing required env vars: ${missing.join(', ')}`);
-  process.exit(1);
+  // Thrown rather than process.exit'd: on Vercel this module is imported inside
+  // a request, and exiting there kills the invocation before a response is sent.
+  throw new Error(`Missing required env vars: ${missing.join(', ')}`);
 }
 
 // FRONTEND_ORIGIN accepts a comma-separated list of allowed origins so the

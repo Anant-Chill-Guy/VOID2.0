@@ -14,6 +14,15 @@ dist
 dist-ssr
 *.local
 
+# Env files. Only server/.gitignore covered these before, which left the repo
+# root unprotected once the server manifest moved up here.
+.env
+.env.*
+!.env.example
+
+# Vercel CLI project link
+.vercel
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
