@@ -1,0 +1,63 @@
+/* About-page intro. A black veil with a big typewriter line; the veil then
+   irises open from the centre while the live hero settles out of its zoom. */
+
+.about-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 2000; /* clears the fixed navbar (1200) and the menu drawer (1100) */
+  display: grid;
+  place-items: center;
+}
+
+/* The whole black screen. The opening is a mask rather than an element, so the
+   hole can start at nothing without any layout: `--hole` is its radius, driven
+   by the timeline. */
+.about-preloader__veil {
+  position: absolute;
+  inset: 0;
+  --hole: 0px;
+  background: #000;
+  -webkit-mask-image: radial-gradient(
+    circle at 50% 50%,
+    transparent var(--hole),
+    #000 calc(var(--hole) + 1.5px)
+  );
+  mask-image: radial-gradient(
+    circle at 50% 50%,
+    transparent var(--hole),
+    #000 calc(var(--hole) + 1.5px)
+  );
+}
+
+.about-preloader__line {
+  position: relative;
+  display: flex;
+  align-items: center;
+  white-space: pre; /* preserves the trailing space before the caret */
+  font-family: 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace;
+  font-size: clamp(3rem, 15vw, 13rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #fff;
+}
+
+/* Revealed one at a time by the timeline. */
+.about-preloader__char {
+  opacity: 0;
+}
+
+/* Block caret — a real terminal cursor rather than a thin bar. */
+.about-preloader__caret {
+  display: block;
+  width: 0.45em;
+  height: 0.95em;
+  margin-left: 0.1em;
+  background: #fff;
+}
+
+/* The intro is pure motion; with reduced motion the page just loads. */
+@media (prefers-reduced-motion: reduce) {
+  .about-preloader {
+    display: none;
+  }
+}

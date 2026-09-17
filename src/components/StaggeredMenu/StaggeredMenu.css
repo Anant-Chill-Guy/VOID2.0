@@ -358,52 +358,23 @@
 }
 
 /* ===== Navbar integration =====
-   Mobile-only menu; toggle sits inside the glass pill on the right.
-   The panel follows the site's dark theme. */
+   The drawer is driven entirely by the nav bar's own hamburger, so this
+   component contributes only the slide-in panel. */
 
-/* Hidden on desktop — the desktop nav links are used instead. */
-@media (min-width: 769px) {
-  .navbar-staggered.staggered-menu-wrapper {
-    display: none;
-  }
-}
-
-/* The nav's `> *` rule clamps children to `fit-content`, which collapses the
-   fixed overlay wrapper to width 0 and pushes the toggle off-screen.
-   Override so the wrapper spans the full viewport. */
+/* Sits below the fixed nav bar (z-index 1200) so the bar and its toggle stay
+   reachable while the drawer is open. The wrapper stays click-through — the
+   base rule sets pointer-events: none, so only the open panel captures
+   input. */
 .navbar-staggered.staggered-menu-wrapper {
   max-width: none;
   width: 100vw;
+  z-index: 1100;
 }
 
-/* The header (logo top-left + close cross top-right) only matters while the
-   menu is open — the top navbar is hidden on mobile. */
+/* The bar owns both the logo and the open/close control (its hamburger folds
+   into a cross while open), so the component's own header is not rendered. */
 .navbar-staggered .staggered-menu-header {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.25s ease, visibility 0.25s ease;
-}
-.navbar-staggered[data-open] .staggered-menu-header {
-  opacity: 1;
-  visibility: visible;
-}
-
-.navbar-staggered .sm-toggle {
-  pointer-events: auto;
-  color: #e5e7eb;
-  font-family: inherit;
-  font-size: 0.95rem;
-  letter-spacing: 0.02em;
-}
-
-.navbar-staggered .sm-toggle-textWrap {
-  width: 44px;
-  min-width: 44px;
-}
-
-.navbar-staggered .sm-logo-img {
-  height: 40px;
-  width: auto;
+  display: none;
 }
 
 /* Full-width panel on mobile with dark glass theme. */
@@ -416,7 +387,7 @@
   backdrop-filter: none;
 }
 
-/* Fluid glass background inside the menu panel (GlassSurface, same as navbar) */
+/* Fluid glass background inside the menu panel (GlassSurface) */
 .navbar-staggered .sm-glass-surface {
   position: absolute;
   inset: 0;

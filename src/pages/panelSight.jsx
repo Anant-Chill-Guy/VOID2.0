@@ -16,7 +16,6 @@ const renderDomains = (r) => {
 
 export default function PanelSight() {
   const [registrations, setRegistrations] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState("");
 
   // Direct entry: no auth, load registrations straight from the DB-backed API.
@@ -30,18 +29,12 @@ export default function PanelSight() {
         if (active) setRegistrations(data);
       } catch {
         if (active) setLoadError("Could not load registrations.");
-      } finally {
-        if (active) setLoading(false);
       }
     })();
     return () => {
       active = false;
     };
   }, []);
-
-  if (loading) {
-    return <div className="panel-sight panel-sight-loading" />;
-  }
 
   return (
     <div className="panel-sight">

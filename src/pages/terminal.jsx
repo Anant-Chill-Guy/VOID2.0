@@ -144,7 +144,6 @@ function TerminalComponent() {
         ctx.lineWidth = 3;
         ctx.beginPath();
         weed.sway += 0.02;
-        const swayOffset = Math.sin(weed.sway) * 10;
         ctx.moveTo(weed.x, canvas.height);
         for (let i = 0; i < weed.height; i += 10) {
           const x = weed.x + Math.sin(weed.sway + i * 0.1) * (10 - i * 0.05);

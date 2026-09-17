@@ -354,9 +354,12 @@ export default function VoidPage() {
     <div className="">
       <Navbar />
 
-      {/* Hero Section — Tech Solutions Showcase (redesign in progress) */}
+      {/* Hero Section — Tech Solutions Showcase (redesign in progress).
+          The black/grey look is applied in index.css (.haos-container .bg
+          canvas + ::after), not here: hueShift only rotates hue around the
+          YIQ chroma plane and cannot desaturate the shader, so it is omitted. */}
       <HaosShowcase
-        bg={<DarkVeil hueShift={200} speed={0.5} />}
+        bg={<DarkVeil speed={0.5} />}
         category="VOID SOCIETY"
         year="2026"
         solutionLabel="TECH"
@@ -365,8 +368,6 @@ export default function VoidPage() {
         subtitle="Only Cybersecurity and ethical hacking club of KIET Group of Institutions."
         statLabel="ETHICAL HACKING"
         statValue="CYBERSECURITY CLUB"
-        bottomValue="+22"
-        progressPercent={60}
         logoText="VOID"
         logo={
           <ParticleText
@@ -388,46 +389,12 @@ export default function VoidPage() {
             glow
           />
         }
-        actionLabel="JOIN US"
-        onAction={() => {
-          const target =
-            document.querySelector(".irc-section") ||
-            document.querySelector(".achievements-section");
-          target?.scrollIntoView({ behavior: "smooth", block: "start" });
-        }}
       />
 
       {/* testing tailwind */}
       {/* <div className="bg-blue-500 text-green-500 p-4 m-4 rounded-lg shadow-lg">
   This div should have a blue background, white text, padding, margin, rounded corners, and a shadow if Tailwind is working correctly.
 </div> */}
-
-      {/* Mobile CTA Section */}
-      <div className="mobile-cta-section">
-        <div className="mobile-cta-container">
-          <h2 className="mobile-cta-title">Ready to Start Your Journey?</h2>
-          <p className="mobile-cta-description">
-            Join our community of cybersecurity enthusiasts and professionals.
-            Learn, practice, and excel in the world of digital security.
-          </p>
-          <div className="mobile-cta-buttons">
-            <div
-              style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}
-            >
-              <button
-                className="mobile-cta-btn primary"
-                disabled
-                style={{ opacity: 0.7, cursor: "not-allowed" }}
-              >
-                Register Now
-              </button>
-              <span style={{ color: "#d1d5db", fontWeight: 600 }}>
-                Registrations closed
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* IRC Section */}
       <section className="irc-section">

@@ -18,7 +18,6 @@ export default function ContactUs() {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [openFaq, setOpenFaq] = useState(null);
 
   // FAQ content moved to `src/pages/FAQ.jsx`.
 
@@ -70,10 +69,6 @@ export default function ContactUs() {
     navigator.clipboard.writeText(text).then(() => {
       alert('Email copied to clipboard!');
     });
-  };
-
-  const toggleFaq = (index) => {
-    setOpenFaq(openFaq === index ? null : index);
   };
 
   return (

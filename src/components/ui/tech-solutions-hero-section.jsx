@@ -27,12 +27,8 @@ export default function HaosShowcase({
   subtitle = 'Brand Concept & Identity',
   statLabel = 'HIGH-QUALITY',
   statValue = 'DEVELOPMENT',
-  bottomValue = '+2K',
-  progressPercent = 60,
   logoText = 'hAOS',
   logo = null,
-  actionLabel = null,
-  onAction = () => {},
   className = '',
 }) {
   return (
@@ -74,40 +70,6 @@ export default function HaosShowcase({
 
       <div className="grid-item center-logo">
         {logo ? logo : <div className="haos-logo">{logoText}</div>}
-      </div>
-
-      <div className="grid-item bottom-left">
-        <div className="stats-value">{bottomValue}</div>
-        <div
-          className="progress-bar"
-          role="progressbar"
-          aria-valuenow={progressPercent}
-          aria-valuemin={0}
-          aria-valuemax={100}
-          style={{ '--progress': progressPercent }}
-        />
-      </div>
-
-      <div className="grid-item bottom-right">
-        {actionLabel ? (
-          <button className="haos-action-button" onClick={onAction}>
-            {actionLabel}
-          </button>
-        ) : (
-          <div
-            className="action-icon"
-            role="button"
-            tabIndex={0}
-            aria-label="Perform action"
-            onClick={onAction}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                onAction();
-              }
-            }}
-          />
-        )}
       </div>
     </section>
   );

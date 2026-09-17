@@ -1,10 +1,9 @@
 import React from 'react';
-import { useParams, useLocation, Navigate, Link } from 'react-router-dom';
+import { useLocation, Navigate, Link } from 'react-router-dom';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 
 export default function BlogPostPage() {
-  const { id } = useParams();
   const location = useLocation();
   const { post } = location.state || {};
 

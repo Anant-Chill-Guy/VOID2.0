@@ -7,10 +7,6 @@
   padding-bottom: 4rem;
 }
 
-.panel-sight-loading {
-  min-height: 100vh;
-}
-
 .panel-sight-login-wrap {
   display: flex;
   align-items: center;
