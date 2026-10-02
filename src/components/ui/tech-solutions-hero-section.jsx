@@ -19,10 +19,6 @@ const shuffleProps = {
 
 export default function HaosShowcase({
   bg = null,
-  category = 'CATEGORY',
-  year = 'YEAR',
-  solutionLabel = 'TECH SOLUTIONS',
-  solutionValue = 'AUTOMATION & ROBOTICS',
   title = 'HAOS Tech Solutions',
   subtitle = 'Brand Concept & Identity',
   statLabel = 'HIGH-QUALITY',
@@ -31,33 +27,45 @@ export default function HaosShowcase({
   logo = null,
   className = '',
 }) {
+  // A newline in `title`/`subtitle` renders as a hard line break, each line
+  // shuffling in.
+  const titleLines = String(title).split('\n');
+  const subtitleLines = String(subtitle).split('\n');
+
   return (
     <section
       className={`haos-container ${className}`}
       role="region"
-      aria-label="Haos Tech Solutions showcase"
+      aria-label="Void tech showcase"
     >
       {/* bg slot */}
       {bg && <div className="bg">{bg}</div>}
 
-      <div className="grid-item top-left">
-        <span className="label">{category}</span>
-        <span className="value">{solutionValue}</span>
-      </div>
-
-      <div className="grid-item top-center">
-        <span className="label">YEAR</span>
-        <span className="value">{year}</span>
-      </div>
-
-      <div className="grid-item top-right">
-        <span className="label">{solutionLabel}</span>
-        <span className="value">{solutionValue}</span>
-      </div>
-
       <div className="grid-item main-content">
-        <Shuffle tag="h1" text={title} className="shuffle-title font-shuffle" textAlign="left" {...shuffleProps} />
-        <Shuffle tag="h2" text={subtitle} className="shuffle-subtitle font-shuffle" textAlign="left" {...shuffleProps} />
+        <h1 className="haos-title">
+          {titleLines.map((line, i) => (
+            <Shuffle
+              key={i}
+              tag="span"
+              text={line}
+              className="haos-title-line font-shuffle"
+              textAlign="left"
+              {...shuffleProps}
+            />
+          ))}
+        </h1>
+        <h2 className="shuffle-subtitle">
+          {subtitleLines.map((line, i) => (
+            <Shuffle
+              key={i}
+              tag="span"
+              text={line}
+              className="haos-subtitle-line font-shuffle"
+              textAlign="left"
+              {...shuffleProps}
+            />
+          ))}
+        </h2>
         <div className="stats-block">
           <span className="label">
             <Shuffle tag="span" text={statLabel} className="shuffle-label font-shuffle" textAlign="left" {...shuffleProps} />

@@ -26,7 +26,7 @@ const achievementItems = [
     link: "#",
     title: "RED N BLUE — Grand Finale of CyberSecureX1.0",
     description:
-      "The VOID Society, under the guidance of the CSE Department at KIET Group of Institutions, hosted RED N BLUE, a 24-hour offline CTF where the top 10 teams from online qualifiers battled in a real-world cyber range with live servers and firewalls. Inspired by a Resident Evil–themed storyline, Red Teams hacked into Umbrella Corp’s systems to stop a nuclear threat while Blue Teams defended critical networks against intrusions. With nonstop action, teamwork, and incident response, this became one of India’s first large-scale offline CTFs — an immersive cyber experience that tested skill, strategy, and resilience.",
+      "The VOID Society, under the guidance of the CSE Department at KIET Deemed To Be University, hosted RED N BLUE, a 24-hour offline CTF where the top 10 teams from online qualifiers battled in a real-world cyber range with live servers and firewalls. Inspired by a Resident Evil–themed storyline, Red Teams hacked into Umbrella Corp’s systems to stop a nuclear threat while Blue Teams defended critical networks against intrusions. With nonstop action, teamwork, and incident response, this became one of India’s first large-scale offline CTFs — an immersive cyber experience that tested skill, strategy, and resilience.",
   },
   {
     image: nullkiet,
@@ -360,12 +360,8 @@ export default function VoidPage() {
           YIQ chroma plane and cannot desaturate the shader, so it is omitted. */}
       <HaosShowcase
         bg={<DarkVeil speed={0.5} />}
-        category="VOID SOCIETY"
-        year="2026"
-        solutionLabel="TECH"
-        solutionValue="CYBERSECURITY"
-        title="Enter into the Cyber Arena with VOID"
-        subtitle="Only Cybersecurity and ethical hacking club of KIET Group of Institutions."
+        title={"Enter Into The Cyber\nArena with VOID"}
+        subtitle={"Only Cybersecurity and ethical hacking\nclub of KIET Deemed To Be University"}
         statLabel="ETHICAL HACKING"
         statValue="CYBERSECURITY CLUB"
         logoText="VOID"
@@ -379,11 +375,11 @@ export default function VoidPage() {
             scatter={190}
             gatherDuration={1600}
             stagger={420}
-            pointerRepel={42}
-            repelRadius={120}
+            pointerRepel={90}
+            repelRadius={210}
             idleDrift={0.8}
             trigger="mount"
-            fontSize="clamp(3.5rem, 13vw, 9rem)"
+            fontSize="clamp(6rem, 24vw, 18rem)"
             fontWeight={800}
             fontFamily="inherit"
             glow

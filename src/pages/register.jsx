@@ -10,6 +10,10 @@ import { isRegisterOnlyHost } from "../registerHost";
 const Navbar = React.lazy(() => import("../components/navbar"));
 const Footer = React.lazy(() => import("../components/footer"));
 
+// Registrations for the current cycle are closed. Flip this to `true` to bring
+// the form back; the page then shows a "registrations are over" notice instead.
+const REGISTRATIONS_OPEN = false;
+
 const ACCOMMODATIONS = ["Hosteller", "Outside"];
 
 const JOIN_GROUP_OPTIONS = ["Yes", "No"];
@@ -27,8 +31,6 @@ const DOMAINS = [
 
 // Registrants may rank up to 3 preferred domains (order = preference).
 const MAX_DOMAINS = 3;
-
-const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/GDDRziM0jwpFOr7jkTmGQj";
 
 const BRANCHES = [
   { code: "CSE", label: "CSE — Computer Science & Engineering" },
@@ -196,7 +198,7 @@ export default function Register() {
             <h1 className="register-hero-title">
               <Shuffle
                 tag="h1"
-                text="JOIN THE VOID"
+                text={REGISTRATIONS_OPEN ? "JOIN THE VOID" : "REGISTRATION"}
                 className="font-shuffle"
                 textAlign="center"
                 shuffleDirection="up"
@@ -205,17 +207,31 @@ export default function Register() {
                 shuffleTimes={1}
               />
             </h1>
-            <p className="register-hero-subtitle">
-              <DecryptedText
-                text="Enter the arena. Secure your slot in the only cybersecurity club of KIET."
-                speed={28}
-                sequential={false}
-              />
-            </p>
+            {REGISTRATIONS_OPEN && (
+              <p className="register-hero-subtitle">
+                <DecryptedText
+                  text="Enter the arena. Secure your slot in the only cybersecurity club of KIET."
+                  speed={28}
+                  sequential={false}
+                />
+              </p>
+            )}
           </section>
 
           <div className="register-grid">
-            {submitted ? (
+            {!REGISTRATIONS_OPEN ? (
+              <div className="register-form-card reg-step register-closed-card">
+                <span className="register-closed-card__bracket register-closed-card__bracket--tl" aria-hidden="true" />
+                <span className="register-closed-card__bracket register-closed-card__bracket--tr" aria-hidden="true" />
+                <span className="register-closed-card__bracket register-closed-card__bracket--bl" aria-hidden="true" />
+                <span className="register-closed-card__bracket register-closed-card__bracket--br" aria-hidden="true" />
+                <div className="register-closed">
+                  <span className="register-closed__mark" aria-hidden="true">✕</span>
+                  <h2>Registrations are closed</h2>
+                  <p>Registrations are over for this year.</p>
+                </div>
+              </div>
+            ) : submitted ? (
               <div className="register-form-card reg-step">
                 <div className="register-success">
                   <CheckmarkIcon />
@@ -379,15 +395,6 @@ export default function Register() {
                         </select>
                         {errors.joinGroup && <span className="reg-error">{errors.joinGroup}</span>}
                       </div>
-
-                      <a
-                        className="reg-whatsapp-btn"
-                        href={WHATSAPP_GROUP_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Join WhatsApp Group
-                      </a>
                     </div>
 
                     {serverError && <span className="reg-error">{serverError}</span>}

@@ -216,6 +216,36 @@ class FileService {
     return { success: true, message: `File updated: ${name}` };
   }
 
+  // Remove file
+  removeFile(path, name) {
+    const filePath = this.normalizePath(`${path}/${name}`);
+    const pathParts = filePath.split('/').filter(p => p);
+
+    let current = this.fileSystem['/'];
+    const parentPath = pathParts.slice(0, -1);
+    const fileName = pathParts[pathParts.length - 1];
+
+    for (const part of parentPath) {
+      if (current.children && current.children[part]) {
+        current = current.children[part];
+      } else {
+        return { success: false, message: `Parent directory not found` };
+      }
+    }
+
+    if (!current.children || !current.children[fileName]) {
+      return { success: false, message: `File not found: ${name}` };
+    }
+
+    if (current.children[fileName].type !== 'file') {
+      return { success: false, message: `Not a file: ${name}` };
+    }
+
+    delete current.children[fileName];
+    this.saveFileSystem();
+    return { success: true, message: `File removed: ${name}` };
+  }
+
   // Normalize path
   normalizePath(path) {
     if (path === '' || path === '.') return '/';
