@@ -71,7 +71,6 @@ const SponsorCard = ({ name, url, logo, color, soft, index }) => {
       <div className="sponsor-card__logo">
         <img src={logo} alt={name} loading="lazy" />
       </div>
-      <h2 className="sponsor-card__name">{name}</h2>
     </a>
   );
 };

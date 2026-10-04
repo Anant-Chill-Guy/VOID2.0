@@ -95,14 +95,18 @@ function GlobeRing({ radius, tilt, color, opacity, tube, speed, count = 4, shape
       </mesh>
       <group ref={shapes}>
         {Array.from({ length: count }).map((_, i) => (
-          <mesh key={i}>
-            {i % 2 === 0 ? (
-              <octahedronGeometry args={[shapeSize, 0]} />
-            ) : (
-              <boxGeometry args={[shapeSize * 0.9, shapeSize * 0.9, shapeSize * 0.9]} />
-            )}
-            <meshBasicMaterial color={color} wireframe transparent opacity={0.9} toneMapped={false} />
-          </mesh>
+          <group key={i}>
+            {/* Solid body so it reads as a planet… */}
+            <mesh>
+              <sphereGeometry args={[shapeSize, 16, 12]} />
+              <meshBasicMaterial color={color} toneMapped={false} />
+            </mesh>
+            {/* …with a faint wireframe shell for the graticule feel. */}
+            <mesh scale={1.18}>
+              <sphereGeometry args={[shapeSize, 12, 10]} />
+              <meshBasicMaterial color={color} wireframe transparent opacity={0.35} toneMapped={false} />
+            </mesh>
+          </group>
         ))}
       </group>
     </group>

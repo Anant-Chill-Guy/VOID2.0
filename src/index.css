@@ -2130,13 +2130,13 @@ img {
 .sponsor-card__logo {
   display: grid;
   place-items: center;
-  height: clamp(110px, 14vw, 170px);
-  margin-bottom: 1rem;
+  height: clamp(140px, 18vw, 230px);
+  width: 100%;
 }
 
 .sponsor-card__logo img {
   max-height: 100%;
-  max-width: 96%;
+  max-width: 100%;
   object-fit: contain;
   /* Screen blend so any dark box in the logo file disappears over the scene. */
   mix-blend-mode: screen;
@@ -5108,6 +5108,45 @@ img {
 .ev-row--right .ev-connector {
   left: 50%;
   background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 75%, transparent), transparent);
+}
+
+/* The upcoming VOID CTF is one centred block — no connector/divider, and its
+   heading, description and CTA are centred. */
+.ev-row.is-upcoming {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.ev-row.is-upcoming .ev-connector {
+  display: none;
+}
+
+.ev-row.is-upcoming .ev-card {
+  width: 100%;
+  max-width: 760px;
+  text-align: center;
+}
+
+.ev-row.is-upcoming .ev-name,
+.ev-row.is-upcoming .ev-name__link {
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.ev-row.is-upcoming .ev-desc {
+  text-align: center;
+}
+
+.ev-row.is-upcoming .ev-cta {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ev-row.is-upcoming .ev-preview {
+  max-width: 560px;
 }
 
 /* Content floats directly over the 3D — no panel, no box. */
