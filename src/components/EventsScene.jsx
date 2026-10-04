@@ -4,6 +4,13 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Billboard, Stars } from '@react-three/drei';
 import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing';
 
+// Devices that can't afford the full scene (phones / reduced-motion / small
+// screens) render a trimmed-down version.
+const isLowPower = () =>
+  typeof window !== 'undefined' &&
+  (window.innerWidth < 768 ||
+    window.matchMedia?.('(prefers-reduced-motion: reduce)').matches);
+
 // A realistic black hole held at a fixed diagonal angle, spinning on its own
 // axis, with a strong blurry gravitational-lensing halo. The galaxy, nebula and
 // starfields all drift to keep the space background alive.
@@ -192,7 +199,7 @@ function PullStreaks() {
 
   const streaks = useMemo(
     () =>
-      Array.from({ length: 20 }, () => ({
+      Array.from({ length: isLowPower() ? 8 : 14 }, () => ({
         angle: Math.random() * Math.PI * 2,
         length: DISK * (1.5 + Math.random() * 2),
         width: DISK * (0.4 + Math.random() * 0.6),
@@ -226,7 +233,7 @@ function BlackHole() {
   const lensingTexture = useLensingTexture();
 
   const diskGeometry = useMemo(() => {
-    const count = 8000;
+    const count = isLowPower() ? 2200 : 5000;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
     const hot = new THREE.Color('#fff3d6');
@@ -360,7 +367,7 @@ function Galaxy() {
   const ref = useRef(null);
 
   const geometry = useMemo(() => {
-    const count = 6000;
+    const count = isLowPower() ? 1800 : 3200;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
     const c = new THREE.Color();
@@ -478,9 +485,10 @@ export default function EventsScene() {
 
   return (
     <Canvas
-      dpr={[1, 1.7]}
+      dpr={isLowPower() ? 1 : [1, 1.5]}
       camera={{ position: [0, 0, 19], fov: 55 }}
-      gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+      gl={{ antialias: false, alpha: true, powerPreference: 'high-performance' }}
+      performance={{ min: 0.5 }}
       frameloop={reduced ? 'demand' : 'always'}
       style={{ pointerEvents: 'none' }}
     >
@@ -496,11 +504,11 @@ export default function EventsScene() {
           <BlackHole />
         </Rig>
 
-        <Stars radius={300} depth={170} count={9000} factor={4} saturation={0} fade speed={1.4} />
+        <Stars radius={300} depth={170} count={isLowPower() ? 2800 : 5000} factor={4} saturation={0} fade speed={1.4} />
       </Suspense>
 
       {!reduced && (
-        <EffectComposer disableNormalPass>
+        <EffectComposer disableNormalPass multisampling={0}>
           <Bloom
             intensity={1.45}
             luminanceThreshold={0.4}

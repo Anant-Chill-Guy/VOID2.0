@@ -3,6 +3,12 @@ import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Sparkles, Stars } from '@react-three/drei';
 
+// Trimmed-down rendering for phones / reduced-motion devices.
+const isLowPower = () =>
+  typeof window !== 'undefined' &&
+  (window.innerWidth < 768 ||
+    window.matchMedia?.('(prefers-reduced-motion: reduce)').matches);
+
 // Click-and-drag rotation. The canvas is pointer-events:none so it can't block
 // the page, so we track drags on the window.
 function useDragRotation() {
@@ -82,7 +88,7 @@ function GlobeRing({ radius, tilt, color, opacity, tube, speed, count = 4, shape
   return (
     <group rotation={tilt}>
       <mesh>
-        <torusGeometry args={[radius, tube, 14, 260]} />
+        <torusGeometry args={[radius, tube, 10, 160]} />
         <meshBasicMaterial color={color} transparent opacity={opacity} toneMapped={false} />
       </mesh>
       <group ref={shapes}>
@@ -129,7 +135,7 @@ function Globe({ radius = 8.5 }) {
 
         {/* Pulsing atmosphere. */}
         <mesh ref={halo} scale={1.1}>
-          <sphereGeometry args={[radius, 32, 32]} />
+          <sphereGeometry args={[radius, 24, 24]} />
           <meshBasicMaterial
             color="#3f7bff"
             transparent
@@ -181,7 +187,7 @@ function Shapes() {
   return (
     <>
       <Globe radius={8.5} />
-      <Sparkles count={200} scale={[50, 30, 30]} size={2.2} speed={0.3} opacity={0.75} color="#9fc4ff" />
+      <Sparkles count={isLowPower() ? 80 : 140} scale={[50, 30, 30]} size={2.2} speed={0.3} opacity={0.75} color="#9fc4ff" />
     </>
   );
 }
@@ -191,7 +197,7 @@ function Galaxy() {
   const ref = useRef(null);
 
   const geometry = useMemo(() => {
-    const count = 5200;
+    const count = isLowPower() ? 1800 : 3200;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
     const c = new THREE.Color();
@@ -246,9 +252,10 @@ export default function SponsorsScene() {
 
   return (
     <Canvas
-      dpr={[1, 2]}
+      dpr={isLowPower() ? 1 : [1, 1.5]}
       camera={{ position: [0, 0, 19], fov: 58 }}
-      gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+      gl={{ antialias: !isLowPower(), alpha: true, powerPreference: 'high-performance' }}
+      performance={{ min: 0.5 }}
       frameloop={reduced ? 'demand' : 'always'}
       style={{ pointerEvents: 'none' }}
     >
@@ -257,8 +264,8 @@ export default function SponsorsScene() {
         <Stage>
           <Shapes />
         </Stage>
-        <Stars radius={320} depth={200} count={14000} factor={6} saturation={0} fade speed={0.5} />
-        <Stars radius={150} depth={90} count={4500} factor={4} saturation={0} fade speed={0.8} />
+        <Stars radius={320} depth={200} count={isLowPower() ? 3500 : 6000} factor={6} saturation={0} fade speed={0.5} />
+        <Stars radius={150} depth={90} count={isLowPower() ? 1200 : 2500} factor={4} saturation={0} fade speed={0.8} />
       </Suspense>
     </Canvas>
   );
