@@ -5149,6 +5149,28 @@ img {
   max-width: 560px;
 }
 
+/* Hide the central spine behind the Upcoming group (no divider through it). */
+.ev-group:first-child .ev-timeline::before {
+  display: none;
+}
+
+/* Only VOID CTF: no "(VIEW PHOTOS)" subheading, bigger text, narrower column. */
+.ev-row.is-upcoming .ev-name__hint {
+  display: none;
+}
+
+.ev-row.is-upcoming .ev-name {
+  font-size: clamp(2.1rem, 4.6vw, 3.2rem);
+}
+
+.ev-row.is-upcoming .ev-desc {
+  font-size: 1.3rem;
+  line-height: 1.75;
+  max-width: 46ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Content floats directly over the 3D — no panel, no box. */
 .ev-card {
   position: relative;
