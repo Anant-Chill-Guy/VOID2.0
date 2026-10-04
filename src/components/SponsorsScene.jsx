@@ -68,36 +68,36 @@ function Stage({ children }) {
   return <group ref={ref}>{children}</group>;
 }
 
-// A ring with wireframe shapes of the same colour riding along it, so each
-// shape travels the ring through its centre.
+// A ring is a fixed orbit plane; the planets on it revolve along the ring while
+// each spins on its own axis (like moons/planets on an orbit).
 function GlobeRing({ radius, tilt, color, opacity, tube, speed, count = 4, shapeSize = 0.42 }) {
   const shapes = useRef(null);
+  // One shared geometry for every planet on this ring (cheaper than per-mesh).
+  const planetGeo = useMemo(() => new THREE.IcosahedronGeometry(shapeSize, 1), [shapeSize]);
 
   useFrame((state) => {
     const g = shapes.current;
     if (!g) return;
-    const t = state.clock.elapsedTime * speed;
-    // The torus lies in the XY plane, so the shapes orbit in XY too — that puts
-    // each "planet" directly on the ring (its orbit) while it spins on its axle.
+    const t = state.clock.elapsedTime;
+    const orbit = t * speed; // revolution speed along the ring
     g.children.forEach((child, i) => {
-      const a = t + (i / count) * Math.PI * 2;
+      const a = orbit + (i / count) * Math.PI * 2;
+      // Revolve: sit exactly on the ring (torus lies in the XY plane).
       child.position.set(Math.cos(a) * radius, Math.sin(a) * radius, 0);
-      child.rotation.x = t * 1.1 + i;
-      child.rotation.y = t * 0.9 + i;
+      // Rotate: spin about the planet's own axis.
+      child.rotation.y = t * 1.3 + i * 1.7;
     });
   });
 
   return (
     <group rotation={tilt}>
       <mesh>
-        <torusGeometry args={[radius, tube, 10, 160]} />
+        <torusGeometry args={[radius, tube, 8, 128]} />
         <meshBasicMaterial color={color} transparent opacity={opacity} toneMapped={false} />
       </mesh>
       <group ref={shapes}>
         {Array.from({ length: count }).map((_, i) => (
-          /* Triangular-grid wireframe sphere — a low-poly planet, not a solid ball. */
-          <mesh key={i}>
-            <icosahedronGeometry args={[shapeSize, 1]} />
+          <mesh key={i} geometry={planetGeo}>
             <meshBasicMaterial color={color} wireframe transparent opacity={0.9} toneMapped={false} />
           </mesh>
         ))}
@@ -107,30 +107,25 @@ function GlobeRing({ radius, tilt, color, opacity, tube, speed, count = 4, shape
 }
 
 // The line-structure globe: a lighter wireframe shell, a pulse halo and rings
-// that act as orbits for same-coloured shapes.
+// that act as orbits for same-coloured planets.
 function Globe({ radius = 8.5 }) {
   const ref = useRef(null);
   const halo = useRef(null);
-  const rings = useRef(null);
 
   useFrame((state, delta) => {
     const t = state.clock.elapsedTime;
-    if (ref.current) {
-      ref.current.rotation.y -= delta * 0.06;
-      ref.current.rotation.z += delta * 0.01;
-    }
+    // Only the globe spins on its own axis; the rings stay fixed as orbits.
+    if (ref.current) ref.current.rotation.y -= delta * 0.06;
     if (halo.current) halo.current.scale.setScalar(1 + Math.sin(t * 1.2) * 0.05);
-    if (rings.current) rings.current.rotation.y += delta * 0.12;
   });
 
   return (
     <group>
-      {/* Globe body — low-detail wireframe so it reads light, not dense. */}
+      {/* Globe body — triangular geodesic wireframe. */}
       <group ref={ref}>
         <mesh>
-          {/* Triangular geodesic grid — denser so it reads as a round sphere. */}
           <icosahedronGeometry args={[radius, 3]} />
-          <meshBasicMaterial color="#ffffff" wireframe transparent opacity={0.8} toneMapped={false} />
+          <meshBasicMaterial color="#ffffff" wireframe transparent opacity={0.6} toneMapped={false} />
         </mesh>
 
         {/* Pulsing atmosphere. */}
@@ -139,40 +134,40 @@ function Globe({ radius = 8.5 }) {
           <meshBasicMaterial
             color="#3f7bff"
             transparent
-            opacity={0.12}
+            opacity={0.09}
             blending={THREE.AdditiveBlending}
             depthWrite={false}
           />
         </mesh>
       </group>
 
-      {/* Each ring is an orbit for same-coloured shapes (red shape ↔ red ring). */}
-      <group ref={rings}>
+      {/* Rings: fixed orbit planes, planets revolve + spin (colour-matched). */}
+      <group>
         <GlobeRing
-          radius={radius * 1.08}
+          radius={radius * 1.18}
           tilt={[Math.PI / 2, 0.18, 0.06]}
           color="#9fc0ff"
-          opacity={0.85}
+          opacity={0.7}
           tube={0.022}
           speed={0.5}
           count={4}
           shapeSize={0.62}
         />
         <GlobeRing
-          radius={radius * 1.22}
+          radius={radius * 1.32}
           tilt={[Math.PI / 2.45, 0.72, -0.22]}
           color="#ff6b86"
-          opacity={0.7}
+          opacity={0.58}
           tube={0.02}
           speed={0.38}
           count={5}
           shapeSize={0.52}
         />
         <GlobeRing
-          radius={radius * 1.36}
+          radius={radius * 1.46}
           tilt={[Math.PI / 1.75, -0.52, 0.36]}
           color="#7fe9ff"
-          opacity={0.6}
+          opacity={0.5}
           tube={0.018}
           speed={0.3}
           count={6}
@@ -187,7 +182,7 @@ function Shapes() {
   return (
     <>
       <Globe radius={8.5} />
-      <Sparkles count={isLowPower() ? 50 : 90} scale={[50, 30, 30]} size={2.2} speed={0.3} opacity={0.75} color="#9fc4ff" />
+      <Sparkles count={isLowPower() ? 35 : 60} scale={[50, 30, 30]} size={2.2} speed={0.3} opacity={0.7} color="#9fc4ff" />
     </>
   );
 }
@@ -264,8 +259,8 @@ export default function SponsorsScene() {
         <Stage>
           <Shapes />
         </Stage>
-        <Stars radius={320} depth={200} count={isLowPower() ? 2200 : 3800} factor={6} saturation={0} fade speed={0.5} />
-        <Stars radius={150} depth={90} count={isLowPower() ? 800 : 1600} factor={4} saturation={0} fade speed={0.8} />
+        <Stars radius={320} depth={200} count={isLowPower() ? 1400 : 2600} factor={6} saturation={0} fade speed={0.5} />
+        <Stars radius={150} depth={90} count={isLowPower() ? 500 : 1100} factor={4} saturation={0} fade speed={0.8} />
       </Suspense>
     </Canvas>
   );

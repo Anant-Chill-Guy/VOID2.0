@@ -289,7 +289,7 @@ function BlackHole() {
           <meshBasicMaterial
             map={lensingTexture}
             transparent
-            opacity={0.4}
+            opacity={0.32}
             depthWrite={false}
             blending={THREE.AdditiveBlending}
             toneMapped={false}
@@ -407,7 +407,7 @@ function Galaxy() {
         sizeAttenuation
         vertexColors
         transparent
-        opacity={0.75}
+        opacity={0.6}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
       />
@@ -504,20 +504,20 @@ export default function EventsScene() {
           <BlackHole />
         </Rig>
 
-        <Stars radius={300} depth={170} count={isLowPower() ? 1800 : 3200} factor={4} saturation={0} fade speed={1.4} />
+        <Stars radius={300} depth={170} count={isLowPower() ? 1000 : 1800} factor={4} saturation={0} fade speed={1.4} />
       </Suspense>
 
       {/* Bloom is the heaviest pass — skip it on phones/reduced-motion. */}
       {!isLowPower() && (
         <EffectComposer disableNormalPass multisampling={0}>
           <Bloom
-            intensity={1.45}
-            luminanceThreshold={0.4}
+            intensity={1.2}
+            luminanceThreshold={0.48}
             luminanceSmoothing={0.25}
             mipmapBlur
-            radius={0.8}
+            radius={0.78}
           />
-          <Vignette offset={0.22} darkness={0.85} />
+          <Vignette offset={0.24} darkness={0.9} />
         </EffectComposer>
       )}
     </Canvas>
