@@ -3,14 +3,14 @@ import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Sparkles, Stars } from '@react-three/drei';
 
-// Trimmed-down rendering for phones / reduced-motion devices.
+
 const isLowPower = () =>
   typeof window !== 'undefined' &&
   (window.innerWidth < 768 ||
     window.matchMedia?.('(prefers-reduced-motion: reduce)').matches);
 
-// Click-and-drag rotation. The canvas is pointer-events:none so it can't block
-// the page, so we track drags on the window.
+
+
 function useDragRotation() {
   const drag = useRef({ rotX: 0, rotY: 0, dragging: false, lastX: 0, lastY: 0 });
 
@@ -52,7 +52,7 @@ function useDragRotation() {
   return drag;
 }
 
-// Root group: at idle the globe spins in place; drag revolves the whole thing.
+
 function Stage({ children }) {
   const ref = useRef(null);
   const drag = useDragRotation();
@@ -68,23 +68,23 @@ function Stage({ children }) {
   return <group ref={ref}>{children}</group>;
 }
 
-// A ring is a fixed orbit plane; the planets on it revolve along the ring while
-// each spins on its own axis (like moons/planets on an orbit).
+
+
 function GlobeRing({ radius, tilt, color, opacity, tube, speed, count = 4, shapeSize = 0.42 }) {
   const shapes = useRef(null);
-  // One shared geometry for every planet on this ring (cheaper than per-mesh).
+  
   const planetGeo = useMemo(() => new THREE.IcosahedronGeometry(shapeSize, 1), [shapeSize]);
 
   useFrame((state) => {
     const g = shapes.current;
     if (!g) return;
     const t = state.clock.elapsedTime;
-    const orbit = t * speed; // revolution speed along the ring
+    const orbit = t * speed; 
     g.children.forEach((child, i) => {
       const a = orbit + (i / count) * Math.PI * 2;
-      // Revolve: sit exactly on the ring (torus lies in the XY plane).
+      
       child.position.set(Math.cos(a) * radius, Math.sin(a) * radius, 0);
-      // Rotate: spin about the planet's own axis.
+      
       child.rotation.y = t * 1.3 + i * 1.7;
     });
   });
@@ -106,29 +106,29 @@ function GlobeRing({ radius, tilt, color, opacity, tube, speed, count = 4, shape
   );
 }
 
-// The line-structure globe: a lighter wireframe shell, a pulse halo and rings
-// that act as orbits for same-coloured planets.
+
+
 function Globe({ radius = 8.5 }) {
   const ref = useRef(null);
   const halo = useRef(null);
 
   useFrame((state, delta) => {
     const t = state.clock.elapsedTime;
-    // Only the globe spins on its own axis; the rings stay fixed as orbits.
+    
     if (ref.current) ref.current.rotation.y -= delta * 0.06;
     if (halo.current) halo.current.scale.setScalar(1 + Math.sin(t * 1.2) * 0.05);
   });
 
   return (
     <group>
-      {/* Globe body — triangular geodesic wireframe. */}
+      {}
       <group ref={ref}>
         <mesh>
           <icosahedronGeometry args={[radius, 3]} />
           <meshBasicMaterial color="#ffffff" wireframe transparent opacity={0.6} toneMapped={false} />
         </mesh>
 
-        {/* Pulsing atmosphere. */}
+        {}
         <mesh ref={halo} scale={1.1}>
           <sphereGeometry args={[radius, 24, 24]} />
           <meshBasicMaterial
@@ -141,7 +141,7 @@ function Globe({ radius = 8.5 }) {
         </mesh>
       </group>
 
-      {/* Rings: fixed orbit planes, planets revolve + spin (colour-matched). */}
+      {}
       <group>
         <GlobeRing
           radius={radius * 1.18}
@@ -187,7 +187,7 @@ function Shapes() {
   );
 }
 
-// A distant spiral galaxy band + nebula haze for a galactic backdrop.
+
 function Galaxy() {
   const ref = useRef(null);
 

@@ -8,8 +8,8 @@ export default function BlogPostPage() {
   const { post } = location.state || {};
 
   if (!post) {
-    // If the post data isn't passed through state, you might want to fetch it
-    // or redirect the user. For now, we'll redirect to the blogs page.
+    
+    
     return <Navigate to="/articles" />;
   }
 

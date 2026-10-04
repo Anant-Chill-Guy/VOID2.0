@@ -9,7 +9,7 @@ export default function IrcPage() {
     <div className="min-h-screen w-full overflow-x-hidden bg-black text-white">
       <Navbar />
 
-      {/* Hero */}
+      {}
       <section className="relative w-full px-6 pt-28 pb-10 text-center">
         <span className="inline-block rounded-full border border-[#00ffff]/40 bg-[#00ffff]/10 px-4 py-1 text-xs uppercase tracking-widest text-[#00ffff]">
           Live Community Chat
@@ -23,7 +23,7 @@ export default function IrcPage() {
         </p>
       </section>
 
-      {/* Chat embed */}
+      {}
       <section className="mx-auto w-full max-w-6xl px-4 pb-10">
         <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-2 shadow-2xl backdrop-blur-xl">
           <iframe
@@ -34,7 +34,7 @@ export default function IrcPage() {
         </div>
       </section>
 
-      {/* Connection details */}
+      {}
       <section className="mx-auto w-full max-w-6xl px-4 pb-24">
         <GlassSurface
           width="100%"

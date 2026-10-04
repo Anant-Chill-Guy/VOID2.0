@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function BlogPostCard({ post, index = 0 }) {
   const { title, snippet, date, readTime, tags } = post;
 
-  // Pointer-tracked 3D tilt; falls back to flat without a pointer.
+  
   const handleMove = (e) => {
     const el = e.currentTarget;
     const r = el.getBoundingClientRect();

@@ -11,13 +11,13 @@ export default defineConfig({
     },
   },
   build: {
-    // three.js (~900 kB) is a lazy route chunk; warn only above it.
+    
     chunkSizeWarningLimit: 1000,
   },
   server: {
-    host: true, // listen on all interfaces
+    host: true, 
     port: 5173,
-    // allow Cloudflare Tunnel host
+    
     allowedHosts: [
       'permit-veteran-mysimon-played.trycloudflare.com '
     ],

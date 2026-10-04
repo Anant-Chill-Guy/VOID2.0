@@ -1,41 +1,41 @@
 import * as React from 'react';
 
-/** Hue at the top of the field and how far it turns by the bottom: yellow,
- *  through orange, red, magenta and blue, to green. */
+
+
 const HUE_TOP = 60;
 const HUE_SPAN = 270;
-/**
- * Each cell takes one of these lightnesses, so a sweep reads as a field of
- * tints rather than one flat colour. On a dark ground the pale end of the
- * ladder would fade through grey, so it starts deeper there.
- */
+
+
+
+
+
 const TINTS = [88, 80, 72, 64, 56];
 const TINTS_DARK = [72, 65, 58, 51, 44];
-/** How faint a cell goes right behind a line of text. */
+
 const FAINT = 0.13;
-/** How many cells it takes to come back up to full strength. */
+
 const FADE = 2.2;
-/** Clearing kept around each line of text, in px. */
+
 const PAD = 5;
 const FADE_IN = 160;
 const FADE_OUT = 750;
-/** Hairline between cells. Faint on its own so the lit cells keep full ink. */
+
 const LINE = 'rgba(255, 255, 255, 0.18)';
 
 const easeOut = (t) => 1 - (1 - t) ** 2;
 const easeIn = (t) => t * t;
 
-/**
- * A fine grid that takes colour where the pointer passes and lets it go a
- * moment later, with a few cells lighting on their own. The spectrum runs
- * down the field like a printed colour chart, so a sweep reveals one coherent
- * band of colour rather than confetti.
- *
- * Place it inside a positioned container, under the content. It is decoration
- * only: hidden from assistive tech, transparent to the pointer, drawn on one
- * canvas that sleeps whenever nothing is lit, paused off screen, and still for
- * readers who ask for reduced motion.
- */
+
+
+
+
+
+
+
+
+
+
+
 export default function GridPulse({
   cell = 24,
   reach = 2.6,
@@ -64,9 +64,9 @@ export default function GridPulse({
     let tints = TINTS;
     const cells = new Map();
 
-    // Light or dark ground, read from the text colour the grid inherits, so it
-    // follows any theme switch. Resolved through a pixel, since computed
-    // colours may be oklch.
+    
+    
+    
     const probe = document.createElement('canvas').getContext('2d', {
       willReadFrequently: true,
     });
@@ -80,9 +80,9 @@ export default function GridPulse({
       tints = light ? TINTS_DARK : TINTS;
     };
 
-    // Protect the lines of text, not the boxes that hold them: a paragraph set
-    // to a measure keeps that width on its short last line too, and the box
-    // would hold a band of cells dark where there is nothing to read.
+    
+    
+    
     const measureText = () => {
       const bounds = el.getBoundingClientRect();
       const scope = el.parentElement ?? document;
@@ -119,11 +119,11 @@ export default function GridPulse({
       wake();
     };
 
-    /**
-     * How bright a cell may be, by its distance from the nearest line of text.
-     * Cells behind the words go faint rather than dark: a hole cut in the grid
-     * reads as a fault, a dip in brightness reads as depth.
-     */
+    
+
+
+
+
     const brightness = (col, row) => {
       const x = col * cell + cell / 2;
       const y = row * cell + cell / 2;
@@ -145,7 +145,7 @@ export default function GridPulse({
       return `hsl(${Math.round(hue)} 94% ${tint}%)`;
     };
 
-    // One loop draws every cell; it runs only while something is lit.
+    
     let frame = 0;
     const draw = (now) => {
       frame = 0;
@@ -164,7 +164,7 @@ export default function GridPulse({
         }
         ctx.globalAlpha = alpha * c.dim;
         ctx.fillStyle = c.colour;
-        // Inset by the hairline, so the grid still shows between lit cells.
+        
         ctx.fillRect(c.col * cell + 1, c.row * cell + 1, cell - 1, cell - 1);
       }
       ctx.globalAlpha = 1;
@@ -174,7 +174,7 @@ export default function GridPulse({
       if (!frame) frame = requestAnimationFrame(draw);
     };
 
-    /** Lights one cell, unless it is off the grid or already lit. */
+    
     const light = (col, row, hold) => {
       if (col < 0 || row < 0 || col >= cols || row >= rows) return;
       if (cells.size >= maxLit) return;
@@ -182,8 +182,8 @@ export default function GridPulse({
       const now = performance.now();
       const lit = cells.get(key);
       if (lit && now < lit.until) return;
-      // A cell caught again while fading picks up from where it had got to,
-      // instead of blinking out and back in.
+      
+      
       let born = now;
       if (lit) {
         const faded = 1 - easeIn(Math.min(1, (now - lit.until) / FADE_OUT));
@@ -200,8 +200,8 @@ export default function GridPulse({
       wake();
     };
 
-    // The pointer paints. Cells further from it catch light less often, so the
-    // edge of the trail breaks up instead of moving as a block.
+    
+    
     let pending = 0;
     let at = null;
     const paint = () => {
@@ -219,16 +219,16 @@ export default function GridPulse({
         }
       }
     };
-    // Listened for on the window, because the grid sits under the content and
-    // never receives the pointer itself.
+    
+    
     const onMove = (event) => {
       const bounds = el.getBoundingClientRect();
       at = { x: event.clientX - bounds.left, y: event.clientY - bounds.top };
       if (!pending) pending = requestAnimationFrame(paint);
     };
 
-    // A few cells find their own way on, so the grid is alive on arrival and on
-    // a screen with no pointer at all. Paused while out of sight.
+    
+    
     let visible = true;
     let beat = 0;
     const drift = () => {
@@ -250,7 +250,7 @@ export default function GridPulse({
     sight.observe(el);
     const resize = new ResizeObserver(measure);
     resize.observe(el);
-    // Text added, removed or rewritten moves the lines to hold back from.
+    
     let recheck = 0;
     const copy = new MutationObserver(() => {
       if (!recheck) {
@@ -273,7 +273,7 @@ export default function GridPulse({
     const scheme = window.matchMedia('(prefers-color-scheme: dark)');
     scheme.addEventListener('change', readTheme);
     measure();
-    // Lines of text move once the web fonts arrive.
+    
     document.fonts?.ready.then(measureText).catch(() => {});
     window.addEventListener('pointermove', onMove, { passive: true });
 
@@ -302,9 +302,9 @@ export default function GridPulse({
         inset: 0,
         overflow: 'hidden',
         pointerEvents: 'none',
-        // Behind the section's content, alongside its other background layers.
+        
         zIndex: -1,
-        // Fades out at the bottom, so whatever follows can climb over it.
+        
         WebkitMaskImage: 'linear-gradient(to bottom, #000 92%, transparent)',
         maskImage: 'linear-gradient(to bottom, #000 92%, transparent)',
         backgroundImage: `linear-gradient(to right, ${LINE} 1px, transparent 1px), linear-gradient(to bottom, ${LINE} 1px, transparent 1px)`,

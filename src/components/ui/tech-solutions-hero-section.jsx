@@ -1,7 +1,7 @@
 import React from 'react';
 import Shuffle from './Shuffle';
 
-// Shared Shuffle config for the hero text slots
+
 const shuffleProps = {
   shuffleDirection: 'right',
   duration: 0.35,
@@ -27,8 +27,8 @@ export default function HaosShowcase({
   logo = null,
   className = '',
 }) {
-  // A newline in `title`/`subtitle` renders as a hard line break, each line
-  // shuffling in.
+  
+  
   const titleLines = String(title).split('\n');
   const subtitleLines = String(subtitle).split('\n');
 
@@ -38,7 +38,7 @@ export default function HaosShowcase({
       role="region"
       aria-label="Void tech showcase"
     >
-      {/* bg slot */}
+      {}
       {bg && <div className="bg">{bg}</div>}
 
       <div className="grid-item main-content">

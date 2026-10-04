@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop.jsx';
 import './App.css';
 
-// Lazy-load all routes so the initial bundle stays small.
+
 const VoidPage = lazy(() => import('./pages/home.jsx'));
 const TerminalPage = lazy(() => import('./pages/terminal.jsx'));
 const Blogs = lazy(() => import('./pages/blogs.jsx'));

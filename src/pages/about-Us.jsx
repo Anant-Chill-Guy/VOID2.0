@@ -5,7 +5,7 @@ import GridPulse from '../components/GridPulse/GridPulse';
 import Navbar from '../components/navbar';
 import './../index.css';
 import Footer from "./../components/footer";
-// The intro plays once per browser session — the first time About is opened.
+
 const PRELOADER_SEEN_KEY = 'void:about-preloader-seen';
 
 const hasSeenPreloader = () => {
@@ -20,11 +20,11 @@ const markPreloaderSeen = () => {
   try {
     sessionStorage.setItem(PRELOADER_SEEN_KEY, '1');
   } catch {
-    // Best-effort only.
+    
   }
 };
 
-// Custom Hook for observing elements and adding a 'visible' class
+
 const useAnimateOnScroll = (options) => {
   const ref = useRef(null);
 
@@ -53,8 +53,8 @@ const useAnimateOnScroll = (options) => {
   return ref;
 };
 
-// Line-art glyphs for the capability cards. Drawn on a shared 24x24 grid at one
-// stroke weight so the three read as a set — the emoji they replace did not.
+
+
 const FEATURE_ICONS = {
   reticle: (
     <>
@@ -94,7 +94,7 @@ const FeatureIcon = ({ name }) => (
 );
 
 const FeatureCard = ({ icon, title, description, accent }) => {
-  // Pointer-tracked 3D tilt; the card stays flat without a pointer.
+  
   const handleMove = (e) => {
     const el = e.currentTarget;
     const rect = el.getBoundingClientRect();
@@ -127,8 +127,8 @@ const FeatureCard = ({ icon, title, description, accent }) => {
   );
 };
 
-// Renders a word as one span per letter so CSS can spread/space the letters.
-// rotateChar marks a single letter to be flipped upside down (design accent).
+
+
 const WordLetters = ({ text, rotateChar }) =>
   text.split('').map((ch, i) => (
     <span
@@ -148,9 +148,9 @@ export default function AboutUs() {
     setShowPreloader(false);
   }, []);
 
-  // Scroll scrub for the hero: ABOUT US slides right, VOID SOCIETY slides
-  // left, and the intro fades — tied to live scroll position so it moves
-  // forward when scrolling down and reverses when scrolling up.
+  
+  
+  
   const heroScroll = useMotionValue(0);
 
   useEffect(() => {
@@ -158,7 +158,7 @@ export default function AboutUs() {
     const update = () => {
       const el = heroRef.current;
       if (!el) return;
-      // 0 = hero fully on screen, 1 = hero fully scrolled past.
+      
       const p = Math.max(0, Math.min(1, -el.getBoundingClientRect().top / el.offsetHeight));
       heroScroll.set(p);
     };
@@ -225,9 +225,9 @@ export default function AboutUs() {
         </section>
 
         <section className="about-section features-section">
-          {/* Full-bleed: the section is capped at 1200px, so the pulse is
-              broken out with the same 50% / -50vw trick the section's own
-              background layers use. */}
+          {
+
+}
           <GridPulse
             reach={6}
             maxLit={340}
@@ -241,7 +241,7 @@ export default function AboutUs() {
           </div>
         </section>
 
-        {/* Registration closed — styled like the old register page card. */}
+        {}
         <section className="about-register-cta">
           <div className="register-closed-card">
             <span className="register-closed-card__bracket register-closed-card__bracket--tl" aria-hidden="true" />

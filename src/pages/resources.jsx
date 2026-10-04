@@ -5,7 +5,7 @@ import { Book, Video, Code, ExternalLink } from 'lucide-react';
 import BlogPostCard from '../components/BlogPostCard';
 import { blogPosts } from '../data/blogPosts';
 
-// Resource groups. `accent` drives the tab, icon and glow.
+
 const CATEGORIES = [
   {
     title: 'Documentation',
@@ -75,7 +75,7 @@ const CATEGORIES = [
   },
 ];
 
-// Adds `is-visible` to the returned ref once it scrolls into view.
+
 function useReveal() {
   const ref = useRef(null);
 

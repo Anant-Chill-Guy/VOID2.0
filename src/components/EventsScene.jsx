@@ -4,23 +4,23 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Billboard, Stars } from '@react-three/drei';
 import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing';
 
-// Devices that can't afford the full scene (phones / reduced-motion / small
-// screens) render a trimmed-down version.
+
+
 const isLowPower = () =>
   typeof window !== 'undefined' &&
   (window.innerWidth < 768 ||
     window.matchMedia?.('(prefers-reduced-motion: reduce)').matches);
 
-// A realistic black hole held at a fixed diagonal angle, spinning on its own
-// axis, with a strong blurry gravitational-lensing halo. The galaxy, nebula and
-// starfields all drift to keep the space background alive.
+
+
+
 
 const DISK = 7;
 const SPHERE = DISK * 0.8;
-const TILT = 0.44; // open ellipse, major axis horizontal
-const FIXED = [0 , -1.25 , 0]; // no roll — the disk sits purely horizontal by default
+const TILT = 0.44; 
+const FIXED = [0 , -1.25 , 0]; 
 
-// Click-and-drag revolve (window-level, since the canvas is pointer-events:none).
+
 function useDragRotation() {
   const drag = useRef({ rotX: 0, rotY: 0, dragging: false, lastX: 0, lastY: 0 });
 
@@ -124,7 +124,7 @@ function useGlowTexture() {
   }, []);
 }
 
-// Blurry Einstein-ring halo — bright just outside the horizon, fading outward.
+
 function useLensingTexture() {
   return useMemo(() => {
     const size = 512;
@@ -270,7 +270,7 @@ function BlackHole() {
 
   return (
     <group rotation={FIXED}>
-      {/* Blurry lensing halos hugging the horizon (always face the camera). */}
+      {}
       <Billboard>
         <mesh>
           <planeGeometry args={[SPHERE * 5, SPHERE * 5]} />
@@ -362,7 +362,7 @@ function BlackHole() {
   );
 }
 
-// A spiral galaxy band that drifts visibly.
+
 function Galaxy() {
   const ref = useRef(null);
 
@@ -452,7 +452,7 @@ function Nebula() {
   );
 }
 
-// Gentle whole-scene drift so the space never feels still.
+
 function Drift({ children }) {
   const ref = useRef(null);
 
@@ -463,7 +463,7 @@ function Drift({ children }) {
   return <group ref={ref}>{children}</group>;
 }
 
-// Drag-to-revolve the black hole; it still spins on its axis underneath.
+
 function Rig({ children }) {
   const ref = useRef(null);
   const drag = useDragRotation();
@@ -507,7 +507,7 @@ export default function EventsScene() {
         <Stars radius={300} depth={170} count={isLowPower() ? 1000 : 1800} factor={4} saturation={0} fade speed={1.4} />
       </Suspense>
 
-      {/* Bloom is the heaviest pass — skip it on phones/reduced-motion. */}
+      {}
       {!isLowPower() && (
         <EffectComposer disableNormalPass multisampling={0}>
           <Bloom

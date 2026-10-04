@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
 import "./panelSight.css";
 
-// Ordered preferred domains as numbered chips (1 = top pick).
+
 const renderDomains = (r) => {
   const domains = [r.domain, r.domain2, r.domain3].filter(Boolean);
   if (domains.length === 0) return "—";
@@ -18,7 +18,7 @@ export default function PanelSight() {
   const [registrations, setRegistrations] = useState([]);
   const [loadError, setLoadError] = useState("");
 
-  // Direct entry: no auth, load registrations straight from the DB-backed API.
+  
   useEffect(() => {
     let active = true;
     (async () => {

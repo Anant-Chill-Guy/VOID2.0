@@ -1,5 +1,5 @@
-// Event data for the Events page. `upcoming` renders first, `past` below it.
-// `gallery` holds photo URLs; the card title opens them in a modal.
+
+
 
 import breach from '../assets/HS/achievements/Breacheverse.jpg';
 import nullkiet from '../assets/HS/achievements/Null-Ghaziabad.jpg';

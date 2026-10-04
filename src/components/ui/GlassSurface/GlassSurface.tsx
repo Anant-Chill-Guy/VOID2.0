@@ -58,9 +58,9 @@ const useDarkMode = () => {
   return isDark;
 };
 
-// Touch-primary devices (phones/tablets) have far weaker GPUs than desktop
-// Chromium. The full-screen SVG displacement-map backdrop filter below is very
-// expensive to rasterize there, so we fall back to the plain CSS backdrop-filter.
+
+
+
 const useCoarsePointer = () => {
   const [isCoarse] = useState(() => {
     if (typeof window === 'undefined' || !window.matchMedia) return false;

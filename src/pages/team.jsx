@@ -24,7 +24,7 @@ import ShreyaSecond from './../assets/Members/SecondYear/Shreya.jpeg'
 
 const initials = (name) => name.split(' ').map((word) => word[0]).slice(0, 2).join('');
 
-// Personal LinkedIn profile for each member. `accent` colours each group.
+
 const GROUPS = [
   {
     headline: 'Founder and Lead',
@@ -75,7 +75,7 @@ const GROUPS = [
 ];
 
 const TeamCard = ({ member, index = 0 }) => {
-  // Pointer-tracked 3D tilt; CSS falls back to flat when there is no pointer.
+  
   const handleMove = (e) => {
     const el = e.currentTarget;
     const rect = el.getBoundingClientRect();

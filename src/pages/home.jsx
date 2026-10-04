@@ -9,8 +9,8 @@ import DarkVeil from "./../components/ui/DarkVeil";
 import ParticleText from "./../components/ui/ParticleText";
 import cyndiaLogo from "./../assets/cyndia.svg";
 
-// Community partners shown near the bottom of the home page. Each card gets a
-// cursor-tracked glow + 3D tilt; the accent colour comes from its modifier.
+
+
 const COMMUNITY_PARTNERS = [
   {
     name: "Cyndia",
@@ -65,13 +65,13 @@ function CommunityPartnerCard({ name, href, logo, className = "" }) {
 
 
 
-// Dot Spotlight Component
+
 function DotSpotlight() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [screenSize, setScreenSize] = useState({ width: 1200, height: 800 });
   const containerRef = useRef(null);
 
-  // Update screen size on mount and resize
+  
   useEffect(() => {
     const updateScreenSize = () => {
       setScreenSize({
@@ -85,7 +85,7 @@ function DotSpotlight() {
     return () => window.removeEventListener("resize", updateScreenSize);
   }, []);
 
-  // Listen for mouse/touch events on the entire hero section
+  
   useEffect(() => {
     const handleMouseMove = (e) => {
       const heroSection = document.querySelector(".hero-section");
@@ -123,13 +123,13 @@ function DotSpotlight() {
     }
   }, []);
 
-  // Generate dot grid based on actual screen size
+  
   const generateDots = () => {
     const dots = [];
     const dotSize = 2;
     const spacing = 25;
-    const cols = Math.ceil(screenSize.width / spacing) + 2; // +2 for buffer
-    const rows = Math.ceil(screenSize.height / spacing) + 2; // +2 for buffer
+    const cols = Math.ceil(screenSize.width / spacing) + 2; 
+    const rows = Math.ceil(screenSize.height / spacing) + 2; 
 
     for (let i = 0; i < cols; i++) {
       for (let j = 0; j < rows; j++) {
@@ -138,7 +138,7 @@ function DotSpotlight() {
         const distance = Math.sqrt(
           Math.pow(x - mousePos.x, 2) + Math.pow(y - mousePos.y, 2),
         );
-        const maxDistance = 120; // spotlight radius
+        const maxDistance = 120; 
         const opacity = Math.max(0, 1 - distance / maxDistance);
 
         dots.push(
@@ -181,22 +181,22 @@ function GlowingButton() {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    // update CSS variables dynamically
+    
     btnRef.current.style.setProperty("--x", `${x}px`);
     btnRef.current.style.setProperty("--y", `${y}px`);
   };
 
   const handleClick = () => {
-    // detect if user is on mobile
+    
     const isMobile = window.innerWidth <= 768;
 
     let targetSection;
 
     if (isMobile) {
-      // scroll to mobile features first
+      
       targetSection = document.querySelector(".irc-section");
     } else {
-      // desktop fallback → IRC → Achievements → Kali SVG
+      
       targetSection =
         document.querySelector(".irc-section") ||
         document.querySelector(".achievements-section") ||
@@ -218,9 +218,9 @@ function GlowingButton() {
       onMouseMove={handleMouseMove}
       onClick={handleClick}
     >
-      {/* Desktop label */}
+      {}
       <span className="hidden md:inline">Get Started</span>
-      {/* Mobile label */}
+      {}
       <span className="md:hidden">Get started</span>
     </button>
   );
@@ -262,10 +262,10 @@ export default function VoidPage() {
     <div className="">
       <Navbar />
 
-      {/* Hero Section — Tech Solutions Showcase (redesign in progress).
-          The black/grey look is applied in index.css (.haos-container .bg
-          canvas + ::after), not here: hueShift only rotates hue around the
-          YIQ chroma plane and cannot desaturate the shader, so it is omitted. */}
+      {
+
+
+}
       <HaosShowcase
         bg={<DarkVeil speed={0.5} />}
         title={"Enter Into The Cyber\nArena with VOID"}
@@ -295,12 +295,12 @@ export default function VoidPage() {
         }
       />
 
-      {/* testing tailwind */}
-      {/* <div className="bg-blue-500 text-green-500 p-4 m-4 rounded-lg shadow-lg">
-  This div should have a blue background, white text, padding, margin, rounded corners, and a shadow if Tailwind is working correctly.
-</div> */}
+      {}
+      {
 
-      {/* IRC Section */}
+}
+
+      {}
       <section className="irc-section">
         <div className="mx-auto w-full max-w-3xl px-4 py-20 text-center">
           <div className="space-y-6">
@@ -323,9 +323,9 @@ export default function VoidPage() {
           </div>
         </div>
       </section>
-      {/* let it deploy */}
+      {}
 
-      {/* Alumni Network Section */}
+      {}
       <section className="alumni-section">
         <h2 className="section-title">Our Alumni Network</h2>
         <p className="section-subtitle">
@@ -357,7 +357,7 @@ export default function VoidPage() {
         </div>
       </section>
 
-      {/* Community Partners */}
+      {}
       <section className="coming-soon-section">
         <div className="coming-soon-shell">
           <h2 className="coming-soon-heading">Commu<span className="cp-wide">n</span><span className="cp-wide">i</span><span className="cp-wide">t</span>y Partners</h2>

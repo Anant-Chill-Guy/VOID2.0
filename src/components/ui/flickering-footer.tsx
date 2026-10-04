@@ -4,7 +4,7 @@ import { ChevronRight, Github, Linkedin, Instagram } from "lucide-react";
 import { cn } from "../../../lib/utils";
 import void_logo from "../../assets/logo.webp";
 
-// Convert any CSS color to an rgba() string (native, no deps).
+
 export const getRGBA = (
   cssColor: string | undefined,
   fallback = "rgba(180, 180, 180, 1)"
@@ -15,7 +15,7 @@ export const getRGBA = (
     const el = document.createElement("div");
     el.style.color = cssColor;
     document.body.appendChild(el);
-    const rgb = window.getComputedStyle(el).color; // "rgb(r, g, b)"
+    const rgb = window.getComputedStyle(el).color; 
     document.body.removeChild(el);
     return rgb.replace(/^rgb\(/, "rgba(").replace(/\)$/, ",1)");
   } catch (e) {
@@ -23,7 +23,7 @@ export const getRGBA = (
   }
 };
 
-// Set the alpha channel of an rgba()/rgb() string.
+
 export const colorWithOpacity = (color: string, opacity: number): string => {
   if (typeof color !== "string" || !color.startsWith("rgb")) return color;
   const m = color.match(/rgba?\(([^)]+)\)/);
@@ -87,10 +87,10 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
 
   const memoizedColor = useMemo(() => getRGBA(color), [color]);
 
-  // Rasterise the text once per size change and record which grid cells it
-  // covers. Sampling the mask with getImageData for every cell on every frame
-  // (the old approach) was thousands of reads per frame and stalled the canvas,
-  // so the wordmark often never appeared.
+  
+  
+  
+  
   const buildTextMask = useCallback(
     (cssWidth: number, cssHeight: number, cols: number, rows: number, dpr: number) => {
       const mask = new Uint8Array(cols * rows);
@@ -156,8 +156,8 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
         for (let j = 0; j < rows; j++) {
           const index = i * rows + j;
           const base = squares[index];
-          // Cells under the text stay brighter than the flicker, so the
-          // wordmark reads clearly through the noise.
+          
+          
           const opacity = textMask[index] ? Math.min(1, base * 3 + 0.5) : base;
           ctx.fillStyle = colorWithOpacity(memoizedColor, opacity);
           ctx.fillRect(i * step * dpr, j * step * dpr, squareSize * dpr, squareSize * dpr);
@@ -230,8 +230,8 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
       const newHeight = height || container.clientHeight;
       setCanvasSize({ width: newWidth, height: newHeight });
       gridParams = setupCanvas(canvas, newWidth, newHeight);
-      // Paint one static frame straight away, so the wordmark is visible even
-      // before the first animation tick or if the observer is slow to fire.
+      
+      
       render(gridParams);
     };
 
@@ -342,10 +342,10 @@ export const Component = () => {
           "linear-gradient(to bottom, rgba(5,9,20,0) 0%, rgba(5,9,20,0.55) 20%, #050914 34%)",
       }}
     >
-      {/* Soft blend blur at the divider with the section above */}
+      {}
 
       <div className="flex flex-col px-10 pb-10 pt-16 md:flex-row md:items-start md:justify-between md:pt-20">
-        {/* Brand */}
+        {}
         <div className="mx-0 flex max-w-xs flex-col items-start justify-start gap-y-5">
           <Link to="/" className="flex items-center">
             <img src={void_logo} alt="VOID Logo" className="h-12 w-auto" />
@@ -370,7 +370,7 @@ export const Component = () => {
           </div>
         </div>
 
-        {/* Link columns */}
+        {}
         <div className="pt-10 md:w-1/2 md:pt-0">
           <div className="flex flex-col items-start justify-start gap-y-10 md:flex-row md:items-center md:justify-between lg:pl-10">
             {footerLinks.map((column, columnIndex) => (
@@ -408,7 +408,7 @@ export const Component = () => {
         </div>
       </div>
 
-      {/* Flickering grid */}
+      {}
       <div className="relative z-0 mt-24 h-48 w-full md:h-64">
         <div className="absolute inset-0 mx-6">
           <FlickeringGrid
@@ -424,7 +424,7 @@ export const Component = () => {
         </div>
       </div>
 
-      {/* Bottom bar */}
+      {}
       <div
         className="border-t border-white/10 px-6"
         style={{

@@ -11,7 +11,7 @@ export default function Blogs() {
       <div className="bg-black min-h-screen pt-24">
         <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-          {/* Page Header */}
+          {}
           <div className="border-b border-slate-700 pb-8 mb-8 text-center">
             <h1 className="blogs-hero-title">Articles</h1>
             <p className="blogs-hero-subtitle">
@@ -19,7 +19,7 @@ export default function Blogs() {
             </p>
           </div>
 
-          {/* Blog Post List */}
+          {}
           <div className="space-y-12">
             {blogPosts.map((post, i) => (
               <BlogPostCard key={post.id} post={post} index={i} />

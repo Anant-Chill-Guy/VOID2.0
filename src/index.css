@@ -9,34 +9,34 @@ html, body {
 }
 
 *{
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
 }
-/* Normal 400 */
+
 @font-face {
   font-family: 'CustomClubFont';
-  src: url('/assets/fonts/e4af272ccee01ff0-s.p.woff2') format('woff2'); /* Inter Normal */
+  src: url('/assets/fonts/e4af272ccee01ff0-s.p.woff2') format('woff2'); 
   font-weight: 400;
   font-style: normal;
 }
 
-/* Semi-Bold 600 */
+
 @font-face {
   font-family: 'CustomClubFont';
-  src: url('/assets/fonts/1b0b3615811be75b-s.p.woff2') format('woff2'); /* Semi-Bold */
+  src: url('/assets/fonts/1b0b3615811be75b-s.p.woff2') format('woff2'); 
   font-weight: 600;
   font-style: normal;
 }
 
-/* Bold 700 */
+
 @font-face {
   font-family: 'CustomClubFont';
-  src: url('/assets/fonts/14d7ce3e41dcbb66-s.p.woff2') format('woff2'); /* Bold/Unknown 700 */
+  src: url('/assets/fonts/14d7ce3e41dcbb66-s.p.woff2') format('woff2'); 
   font-weight: 700;
   font-style: normal;
 }
 
-/* Display font used for the Community Partners heading. */
+
 @font-face {
   font-family: 'Black Ops One';
   src: url('/assets/fonts/Anurati.otf') format('opentype');
@@ -48,12 +48,12 @@ body {
   background: black;
   font-family: system-ui, sans-serif;
   color: white;
-  /* Hide scrollbar for IE, Edge and Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
+
 body::-webkit-scrollbar {
   display: none;
 }
@@ -67,14 +67,14 @@ img {
   position: relative;
   width: 100%;
 }
-/* IRC section */
+
 .irc-section {
   background-color: black;
   width: 100%;
-  padding: 1rem 1rem; /* Reduced mobile padding to bring it closer */
+  padding: 1rem 1rem; 
   display: flex;
   align-items: center;
-  flex-direction: column; /* Stack on mobile */
+  flex-direction: column; 
   gap: 2rem;
 }
 
@@ -88,17 +88,17 @@ img {
 }
 
 .irc-panel-container {
-  width: 95%; /* Much wider on mobile */
-  max-width: 100%; /* Full width available on mobile */
-  height: 350px; /* Reasonable height for mobile */
-  margin: 0 auto; /* Center it on mobile */
-  background-color: rgba(17, 24, 39, 0.5); /* bg-gray-900 bg-opacity-50 */
-  border: 1px solid rgb(55, 65, 81); /* border-gray-700 */
-  border-radius: 0.5rem; /* rounded-lg */
+  width: 95%; 
+  max-width: 100%; 
+  height: 350px; 
+  margin: 0 auto; 
+  background-color: rgba(17, 24, 39, 0.5); 
+  border: 1px solid rgb(55, 65, 81); 
+  border-radius: 0.5rem; 
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 1rem; /* p-4 */
+  padding: 1rem; 
 }
 
 @media (min-width: 768px) {
@@ -115,7 +115,7 @@ img {
     width: 55%;
     max-width: 67%;
     height: 450px;
-    margin-left: 40px; /* Original desktop positioning */
+    margin-left: 40px; 
   }
 }
 
@@ -126,15 +126,15 @@ img {
   }
 }
 
-/* Panel inside */
+
 .irc-panel {
   width: 100%;
   height: 100%;
 }
 
-/* Responsive breakpoints */
+
 .irc-text-container{
-  width: 100%; /* Full width on mobile */
+  width: 100%; 
   margin: 0;
   text-align: center;
 }
@@ -154,16 +154,16 @@ img {
   margin-bottom: 1rem;
 }
 
-/* Hero Section Wrapper */
+
 .hero-section {
   position: relative;
   width: 100%;
-  min-height: 100vh; /* Full viewport height on mobile like desktop */
+  min-height: 100vh; 
   overflow: hidden;
   background: #000;
 }
 
-/* Dot Spotlight Effect */
+
 .dot-spotlight-container {
   position: absolute;
   top: 0;
@@ -173,7 +173,7 @@ img {
   min-width: 100%;
   min-height: 100%;
   z-index: 1;
-  pointer-events: none; /* Don't block interactions with content above */
+  pointer-events: none; 
   overflow: hidden;
 }
 
@@ -182,24 +182,24 @@ img {
   border-radius: 50%;
   transition: all 0.15s ease;
   pointer-events: none;
-  will-change: background-color, box-shadow; /* Optimize for animations */
+  will-change: background-color, box-shadow; 
 }
 
-/* Hero interaction layer - invisible overlay for better mouse tracking */
+
 .hero-interaction-layer {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 50; /* High z-index but still allows interactions with content */
-  pointer-events: none; /* Don't block clicks on buttons/links */
+  z-index: 50; 
+  pointer-events: none; 
 }
 
-/* Mobile touch optimization */
+
 @media (max-width: 768px) {
   .dot {
-    transition: all 0.2s ease; /* Slightly slower transitions on mobile */
+    transition: all 0.2s ease; 
   }
 }
 
@@ -212,32 +212,32 @@ img {
 @media (min-width: 1024px) {
   .hero-section {
     min-height: 100vh;
-    overflow: visible; /* Allow desktop positioning to work normally */
+    overflow: visible; 
   }
 }
 
-/* About Section */
+
 .about_desc {
-  position: relative; /* Change from absolute */
+  position: relative; 
   top: auto;
   left: auto;
-  z-index: 35; /* Higher z-index to stay above SVG background */
-  padding: 1.5rem 1rem; /* Slightly less padding on mobile */
+  z-index: 35; 
+  padding: 1.5rem 1rem; 
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 80vh; /* Match full viewport height to center content */
+  min-height: 80vh; 
 }
 
 .about_desc p {
-  font-size: 0.9rem; /* Smaller text on mobile */
+  font-size: 0.9rem; 
   line-height: 1.5;
 }
 
 @media (min-width: 768px) {
   .about_desc {
     padding: 2rem 1rem;
-    min-height: 90vh; /* Keep full viewport height for tablets too */
+    min-height: 90vh; 
   }
   
   .about_desc p {
@@ -252,17 +252,17 @@ img {
     top: 20%;
     left: 10%;
     padding: 0;
-    display: block; /* Reset flexbox for desktop */
-    min-height: auto; /* Reset min-height for desktop */
-    justify-content: initial; /* Reset flex properties */
+    display: block; 
+    min-height: auto; 
+    justify-content: initial; 
   }
   
   .about_desc p {
-    font-size: 1rem; /* Original size */
+    font-size: 1rem; 
   }
 }
 
-/* Mobile-only glow background */
+
 .about_desc::before {
   content: '';
   position: absolute;
@@ -291,14 +291,14 @@ img {
     padding: 0;
   }
   
-  /* Hide the glow effect on desktop */
+  
   .about_desc::before {
     display: none;
   }
 }
 
 .about-club {
-  width: 100%; /* Mobile first */
+  width: 100%; 
   max-width: 90vw;
 }
 
@@ -316,7 +316,7 @@ img {
 
 .about-club-h1 {
   font-family: 'CustomClubFont', sans-serif;
-  font-size: 3.5rem; /* Smaller on mobile */
+  font-size: 3.5rem; 
   font-weight: 700;
   margin: 0;
   margin-top: 20px;
@@ -335,13 +335,13 @@ img {
 
 @media (min-width: 768px) {
   .about-club-h1 {
-    font-size: 5rem; /* Medium size for tablets */
+    font-size: 5rem; 
   }
 }
 
 @media (min-width: 1024px) {
   .about-club-h1 {
-    font-size: 8ch; /* Original size for desktop */
+    font-size: 8ch; 
   }
 }
 
@@ -384,9 +384,9 @@ img {
   top: var(--y);
   left: var(--x);
   transform: translate(-50%, -50%);
-  width: 150px;   /* fixed size (circle) */
+  width: 150px;   
   height: 150px;
-  border-radius: 50%; /* ensures circular shape */
+  border-radius: 50%; 
   background: radial-gradient(circle, rgba(59,130,246,0.8) 0%, rgba(59,130,246,0.2) 40%, transparent 70%);
   opacity: 0;
   transition: opacity 0.2s;
@@ -404,15 +404,15 @@ img {
 }
 
 .kali_svg_div{
-  position: absolute; /* Position it behind on mobile */
+  position: absolute; 
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  z-index: 5; /* Behind the about_desc but above background */
+  z-index: 5; 
   padding: 0;
-  pointer-events: none; /* Make it non-interactive on mobile */
+  pointer-events: none; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -420,7 +420,7 @@ img {
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .kali_svg_div {
-    /* Keep same positioning for tablet */
+    
     height: 100%;
   }
 }
@@ -433,9 +433,9 @@ img {
     width: 100vh;
     height: 100vh;
     padding: 0;
-    z-index: 20; /* Restore original z-index for desktop */
-    pointer-events: auto; /* Restore interactivity on desktop */
-    transform: none; /* Reset transform for desktop */
+    z-index: 20; 
+    pointer-events: auto; 
+    transform: none; 
   }
 }
 
@@ -478,7 +478,7 @@ img {
   100% { opacity: 1; }
 }
 
-/* Kali Distro Video Section */
+
 .kali_distro_overview {
   position: absolute;
   top: 110%;
@@ -503,30 +503,30 @@ img {
   display: block;
 }
 
-/* --- About Us Page --- */
+
 .about-us-page {
   background-color: #000;
   color: #e0e0e0;
-  /* No top padding: the hero is full-bleed and the fixed navbar floats over it. */
+  
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
 }
 
 .about-hero {
-  /* Full-screen hero: VOID wordmark top & bottom, intro block on the left-middle. */
+  
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;         /* fallback */
-  min-height: 100svh;        /* true viewport height incl. mobile URL bar */
-  padding: 0;                /* no inset so the words can reach the screen edges */
+  min-height: 100vh;         
+  min-height: 100svh;        
+  padding: 0;                
   background: #000;
   text-align: center;
-  overflow: hidden;          /* crops the oversized words at the hero edges */
+  overflow: hidden;          
 }
 
 .about-hero-wordmark {
-  /* Fills the hero: VOID pins to the top, SOCIETY pins to the bottom. */
+  
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -536,20 +536,20 @@ img {
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
-  /* Sized so the longer word (VOID SOCIETY) fits the viewport instead of
-     bleeding off and losing letters; the old 16vw was wider than the screen. */
+  
+
   font-size: clamp(2.25rem, 12vw, 17rem);
   line-height: 1;
   color: #fff;
   margin: 0;
-  /* The two words are pinned to the very top and bottom of the viewport; the
-     small translate on each (below) cancels the font's internal leading so the
-     caps and baseline land flush on the edges without being clipped. */
+  
+
+
   padding: 0;
 }
 
 .about-hero-wordmark__word {
-  /* Letters are spread (space-between) edge to edge across the viewport. */
+  
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -559,7 +559,7 @@ img {
   letter-spacing: 0.03em;
 }
 
-/* ABOUT US: only the A is flipped 180° in place (accent); the rest stay upright. */
+
 .about-hero-wordmark__word--top .about-hero-wordmark__letter--flip {
   transform: rotate(180deg);
 }
@@ -587,44 +587,44 @@ img {
 }
 
 .about-hero-circle {
-  /* Decorative white disc, half hidden off the right edge, blending into the
-     top wordmark's rightmost letter (the S of ABOUT US). */
+  
+
   position: absolute;
   top: 50%;
   right: 0;
   width: clamp(300px, 60vh, 760px);
   aspect-ratio: 1 / 1;
-  transform: translate(50%, -50%); /* only the left half shows */
+  transform: translate(50%, -50%); 
   background: #fff;
   border-radius: 50%;
   pointer-events: none;
   z-index: 1;
 }
 
-/* Phones. 16vw is the size at which a word's natural width exactly fills the
-   106% word row, which is what the desktop layout is built around — the outer
-   3% a side is meant to bleed off. Desktop's 4.5rem floor only ever bites below
-   450px, and there it is wider than the screen: at 390px it set the word at
-   72px, 477px wide against a 413px row, so VOID SOCIETY lost whole letters
-   instead of bleeding its edges. The lower floor hands those widths back to
-   16vw. */
+
+
+
+
+
+
+
 @media (max-width: 640px) {
   .about-hero-wordmark {
-    /* Match the base formula so the longer word keeps fitting the screen; the
-       old 16vw here was what clipped VOID SOCIETY on phones. */
+    
+
     font-size: max(1.75rem, 12vw);
   }
 
-  /* The disc is sized off the viewport height on desktop, which on a portrait
-     phone makes it wider than the screen and, at 60vh, wide enough to sit under
-     the intro copy. Its left edge lands at 78vw here, just clear of the copy. */
+  
+
+
   .about-hero-circle {
     width: min(44vw, 28vh);
   }
 
   .about-hero-intro {
-    /* The block starts 6vw in, so this holds its right edge at 76vw — just
-       inside the 78vw the disc reaches to. */
+    
+
     max-width: min(560px, 70vw);
   }
 
@@ -659,8 +659,8 @@ img {
     font-size: 2rem;
   }
 
-  /* The section's cap is a max-width, so without this the cards run edge to
-     edge on a phone. */
+  
+
   .features-section {
     padding-inline: 1.25rem;
   }
@@ -686,20 +686,20 @@ img {
   color: #fff;
 }
 
-/* Second section (Our Philosophy): full viewport, ready to be redesigned. */
+
 .about-philosophy {
   width: 100%;
   max-width: none;
-  min-height: 100vh;   /* fallback */
-  min-height: 100svh;  /* true viewport height incl. mobile URL bar */
+  min-height: 100vh;   
+  min-height: 100svh;  
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0;
   padding: clamp(5rem, 12vh, 8rem) clamp(1.5rem, 6vw, 6rem);
-  /* section-bg image, darkened so the white text stays readable.
-     Path is percent-encoded because the asset filename contains spaces. */
+  
+
   background-color: #000;
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)),
@@ -709,7 +709,7 @@ img {
   background-repeat: no-repeat;
 }
 
-/* Features Grid */
+
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -724,9 +724,9 @@ img {
   margin-top: 60px;
 }
 
-/* Monochrome team card: a hairline panel per member, nothing more. Portraits
-   stay in full colour — the panel and the name are the only things the section
-   adds. */
+
+
+
 .team-member-card {
   display: flex;
   flex-direction: column;
@@ -745,30 +745,30 @@ img {
   background: rgba(255, 255, 255, 0.04);
 }
 
-/* --- Cybercore capability cards ---
-   HUD panels: reticle corners, a CRT scanline texture, a diamond icon housing
-   that rotates, and a one-shot scan sweep on hover. */
+
+
+
 
 .features-section {
-  /* Own stacking context so the full-bleed layers below stay above the page
-     background but behind this section's content. */
+  
+
   position: relative;
   isolation: isolate;
-  /* Full-screen panel, like the hero and the philosophy section. min-height
-     rather than height so a short viewport grows instead of clipping. */
-  min-height: 100vh;   /* fallback */
-  min-height: 100svh;  /* true viewport height incl. mobile URL bar */
+  
+
+  min-height: 100vh;   
+  min-height: 100svh;  
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* Symmetric, so the centring stays true. The section owns the whole screen
-     now, so it no longer needs extra weight on the top edge. */
+  
+
   padding-block: 4rem;
 }
 
-/* Console surface: pure black, running full-bleed and masked top and bottom so
-   it dissolves into the sections either side. The grid itself is drawn by
-   GridPulse, which is interactive — a second static grid here would fight it. */
+
+
+
 .features-section::before {
   content: '';
   position: absolute;
@@ -784,10 +784,10 @@ img {
   pointer-events: none;
 }
 
-/* Black blur band across the top edge only, melting the console surface into
-   the section above. Linear rather than radial so the falloff reaches both
-   screen edges instead of fading out before them. Sized to the fade rather
-   than the section — a full-height layer would be blurred for nothing. */
+
+
+
+
 .features-section::after {
   content: '';
   position: absolute;
@@ -803,7 +803,7 @@ img {
 }
 
 .feature-card {
-  /* Per-card accent colour, set inline from the feature data. */
+  
   --accent: #4da3ff;
 
   position: relative;
@@ -816,7 +816,7 @@ img {
   padding: 2.5rem 2.25rem 2.25rem;
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  /* Transparent glass: a faint tint + blur so the text stays readable. */
+  
   background: rgba(6, 10, 18, 0.34);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
@@ -841,7 +841,7 @@ img {
   }
 }
 
-/* Accent glow across the top of the card. */
+
 .feature-card::after {
   content: '';
   position: absolute;
@@ -854,7 +854,7 @@ img {
   transition: opacity 0.4s ease;
 }
 
-/* 1px accent gradient ring drawn with a mask. */
+
 .feature-card::before {
   content: '';
   position: absolute;
@@ -877,7 +877,7 @@ img {
   transition: opacity 0.4s ease;
 }
 
-/* Big ghost sequence number. */
+
 .feature-card__index {
   position: absolute;
   top: 1rem;
@@ -892,7 +892,7 @@ img {
   pointer-events: none;
 }
 
-/* Bright accent tile with the line-art glyph knocked out dark. */
+
 .feature-icon {
   position: relative;
   z-index: 1;
@@ -991,7 +991,7 @@ img {
   }
 }
 
-/* Team Section */
+
 .team-member-img {
   width: 120px;
   height: 120px;
@@ -1023,23 +1023,23 @@ img {
   color: rgba(255, 255, 255, 0.42);
 }
 
-/* The team section is the one placeholder where the blue rule under a section
-   title is dropped, so the heading does not reintroduce the colour the rest of
-   the section has just removed. */
+
+
+
 .team-section .section-title::after {
   height: 2px;
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* --- Team strips ---
-   One blue block per group: a large centred heading, then a centred row of
-   equal-size, small portraits, each with its name (and role, if any) set
-   directly beneath it. The heading, the portraits and the names all live on the
-   accent blue, so no portrait ever lands on black, and gaps between the tiles
-   let the blue show through. */
+
+
+
+
+
+
 .team-strip {
   position: relative;
-  /* Break out of .about-section's 1200px measure to the full viewport. */
+  
   left: 50%;
   width: 100vw;
   margin-left: -50vw;
@@ -1047,16 +1047,16 @@ img {
   text-align: center;
   background-color: #3b82f6;
   color: #000;
-  /* One uniform tile size for every group, larger than before so the portraits
-     read clearly against the headings. */
+  
+
   --tile: clamp(5.25rem, 10.5vw, 11rem);
-  /* Tight vertical padding: heading close to the top blue edge, names close to
-     the bottom. */
+  
+
   padding: clamp(0.9rem, 1.5vw, 1.25rem) clamp(1rem, 4vw, 3rem) clamp(1rem, 1.6vw, 1.35rem);
 }
 
-/* The group's heading: the display face, bold, just a little smaller than the
-   original so it sits well against the portraits. */
+
+
 .team-strip__headline {
   margin: 0 0 clamp(0.9rem, 1.5vw, 1.25rem);
   font-family: 'CustomClubFont', sans-serif;
@@ -1068,8 +1068,8 @@ img {
   color: #000;
 }
 
-/* Centred row of tiles; wraps to further centred rows when the viewport is too
-   narrow to hold them all. */
+
+
 .team-strip__row {
   display: flex;
   flex-wrap: wrap;
@@ -1079,7 +1079,7 @@ img {
   min-width: 0;
 }
 
-/* One member: portrait, then the name block beneath it. */
+
 .team-strip__member {
   display: flex;
   flex-direction: column;
@@ -1094,19 +1094,19 @@ img {
   align-items: center;
   justify-content: center;
   width: 100%;
-  /* Square: the taller crop was mostly the empty backdrop above each head. */
+  
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  /* Transparent so the strip's blue is the ground the portraits sit on. */
+  
   background-color: transparent;
 }
 
-/* Five of these sources are cut-outs floating on black and two are environmental
-   photos with bright walls behind them, so the raw row reads as a floating head
-   next to a lit rectangle. This scrim presses the backdrops towards the dark of
-   the majority while leaving the faces in the middle of the frame alone. It is a
-   stopgap for the source photos, not a design decision — real portraits would
-   let it come out. */
+
+
+
+
+
+
 .team-strip__frame::after {
   content: '';
   position: absolute;
@@ -1125,12 +1125,12 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* These sources sit high in frame; bias the crop up rather than centring it. */
+  
   object-position: center 18%;
   filter: contrast(1.06);
 }
 
-/* Stand-in for a member with no portrait on file — a lighter well on the blue. */
+
 .team-strip__frame--pending {
   font-size: clamp(1rem, 2vw, 1.6rem);
   font-weight: 600;
@@ -1160,7 +1160,7 @@ img {
 
 @media (max-width: 640px) {
   .team-strip {
-    /* Smaller tiles so the row stays centred and compact on phones. */
+    
     --tile: clamp(4.5rem, 20vw, 6.5rem);
     padding-inline: 1rem;
   }
@@ -1174,7 +1174,7 @@ img {
   }
 }
 
-/* Founder Styles */
+
 .founder-container {
   display: flex;
   justify-content: center;
@@ -1225,7 +1225,7 @@ img {
   color: rgba(255, 255, 255, 0.42);
 }
 
-/* Core Members Styles */
+
 .core-members-container {
   margin-top: 30px;
   max-width: 100%;
@@ -1293,7 +1293,7 @@ img {
   font-weight: 400;
 }
 
-/* Core Members Names Only */
+
 .core-members-names {
   display: flex;
   flex-wrap: wrap;
@@ -1354,7 +1354,7 @@ img {
   }
 }
 
-/* Join Us Section */
+
 .about-join-us {
   text-align: center;
   padding: 60px 20px;
@@ -1379,7 +1379,7 @@ img {
   transform: scale(1.05);
 }
 
-/* Locked Join Us state */
+
 .join-us-locked {
   margin-top: 30px;
   display: flex;
@@ -1404,7 +1404,7 @@ img {
   font-size: 20px;
 
 }
-/* Scroll Animations */
+
 .fade-in, .fade-in-up {
   opacity: 0;
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -1423,10 +1423,10 @@ img {
   transform: translateY(0);
 }
 
-/* --- Achievements Section (Home Page) --- */
+
 .achievements-section {
   background-color: #000000;
-  padding: 1.5rem 1rem; /* Reduced padding to bring it closer */
+  padding: 1.5rem 1rem; 
   text-align: center;
 }
 
@@ -1457,13 +1457,13 @@ img {
 .achievements-grid {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: 80%; /* Each card takes 80% of the container width */
+  grid-auto-columns: 80%; 
   gap: 40px;
   overflow-x: auto;
   padding: 20px;
   scroll-snap-type: x mandatory;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
 }
 
 .achievement-card {
@@ -1510,7 +1510,7 @@ img {
   flex-grow: 1;
 }
 
-/* Mobile phones only: Truncated description with show more functionality */
+
 @media (max-width: 768px) {
   .achievement-description.truncated {
     display: -webkit-box;
@@ -1545,10 +1545,10 @@ img {
   }
 }
 
-/* --- Alumni Section --- */
+
 .alumni-section {
   background-color: #000000;
-  padding: 3rem 1rem; /* Better mobile padding */
+  padding: 3rem 1rem; 
   text-align: center;
 }
 
@@ -1632,7 +1632,7 @@ img {
   line-height: 1.8;
 }
 
-/* --- Partners Section --- */
+
 .partners-section {
   background-color: transparent;
   text-align: center;
@@ -1707,9 +1707,9 @@ img {
   object-fit: contain;
 }
 
-/* Custom style for Cyndia logo to make it bigger */
+
 .partner-card.cyndia-card .partner-image {
-  max-width: 120%; /* Increase size for the SVG */
+  max-width: 120%; 
 }
 
 .partner-content {
@@ -1729,7 +1729,7 @@ img {
   line-height: 1.7;
 }
 
-/* --- VOID CTF banner (home) --- */
+
 .ctf-section {
   position: relative;
   padding: clamp(4rem, 9vw, 7rem) 1.25rem;
@@ -1798,7 +1798,7 @@ img {
   box-shadow: 0 18px 40px -22px rgba(0, 230, 118, 0.9);
 }
 
-/* --- Sponsors page --- */
+
 .sponsors-page {
   position: relative;
   min-height: 100vh;
@@ -1806,7 +1806,7 @@ img {
   overflow-x: hidden;
 }
 
-/* Fixed 3D shapes canvas behind the whole page. */
+
 .sponsors-bg {
   position: fixed;
   inset: 0;
@@ -1818,19 +1818,19 @@ img {
   display: block;
 }
 
-/* Readability veil over the scene. */
+
 .sponsors-bg-veil {
   position: fixed;
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  /* Side/top vignette only — no dark fade at the bottom. */
+  
   background:
     radial-gradient(85% 85% at 50% 42%, transparent 48%, rgba(0, 0, 0, 0.5) 100%),
     linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, transparent 22%, transparent 100%);
 }
 
-/* Hero */
+
 .sponsors-hero {
   position: relative;
   z-index: 2;
@@ -1853,7 +1853,7 @@ img {
   letter-spacing: 0.13em;
   text-transform: uppercase;
   text-align: center;
-  /* Room above/below so the gradient (background-clip:text) isn't cut off. */
+  
   padding: 0.12em 0.1em 0.06em;
   background: linear-gradient(180deg, #ffffff 22%, #8fbcff 88%, #29e0c8 130%);
   background-size: 200% 100%;
@@ -1869,7 +1869,7 @@ img {
   display: block;
 }
 
-/* Huge gap, then a faint whitish-transparent veil covering to the bottom. */
+
 .sponsors-list-wrap {
   position: relative;
   z-index: 2;
@@ -1878,7 +1878,7 @@ img {
   min-height: 82vh;
   display: flex;
   flex-direction: column;
-  /* Faint white wash — barely lightens, keeping the 3D background visible. */
+  
   background: rgba(255, 255, 255, 0.06);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
@@ -1888,7 +1888,7 @@ img {
   margin-bottom: clamp(3rem, 8vw, 5rem);
 }
 
-/* VOID CTF block, centred at the top of the page. */
+
 .sponsors-top {
   display: flex;
   flex-direction: column;
@@ -1896,7 +1896,7 @@ img {
   justify-content: center;
   gap: clamp(0.85rem, 2vw, 1.4rem);
   min-height: 100vh;
-  /* Slightly up from screen centre. */
+  
   padding: 3vh clamp(1.25rem, 5vw, 3rem) clamp(1.5rem, 4vw, 3rem);
 }
 
@@ -1924,7 +1924,7 @@ img {
   gap: 0.6rem;
   padding: 1.9rem 1.7rem;
   border-radius: 18px;
-  /* No box — the logo floats directly on the background. */
+  
   border: none;
   background: none;
   text-align: center;
@@ -1942,7 +1942,7 @@ img {
 @keyframes sponsor-in {
   from {
     opacity: 0;
-    /* `translate` is independent of `transform`, so the 3D tilt stays intact. */
+    
     translate: 0 28px;
   }
   to {
@@ -1951,14 +1951,14 @@ img {
   }
 }
 
-/* Heading shimmer. */
+
 @keyframes heading-shimmer {
   to {
     background-position: -200% 0;
   }
 }
 
-/* Gentle float for the call-to-action buttons. */
+
 @keyframes btn-float {
   0%,
   100% {
@@ -1980,7 +1980,7 @@ img {
   }
 }
 
-/* Per-card accent bar across the top edge (soft). */
+
 .sponsor-card::before {
   content: '';
   position: absolute;
@@ -1997,7 +1997,7 @@ img {
   transition: width 0.35s ease, opacity 0.35s ease;
 }
 
-/* Cursor-tracked spotlight (very soft, per-card colour). */
+
 .sponsor-card__sheen {
   position: absolute;
   inset: 0;
@@ -2048,18 +2048,18 @@ img {
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
-  /* Screen blend so any dark box in the logo file disappears over the scene. */
+  
   mix-blend-mode: screen;
   filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.55));
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* On hover the logo lifts slightly. */
+
 .sponsor-card:hover .sponsor-card__logo img {
   transform: scale(1.05);
 }
 
-/* Single, centred partner card on the home page. */
+
 .partners-grid--single {
   grid-template-columns: minmax(0, 420px);
   justify-content: center;
@@ -2080,7 +2080,7 @@ img {
   max-width: 1170px;
   margin: auto;
   display: grid;
-  grid-template-columns: 1fr; /* Single column on mobile */
+  grid-template-columns: 1fr; 
   gap: 30px;
   padding: 0 15px;
 }
@@ -2181,7 +2181,7 @@ img {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* --- Contact Us Page --- */
+
 .contact-us-page {
   background-color: #0a0a0a;
   color: #e0e0e0;
@@ -2220,7 +2220,7 @@ img {
   margin: 10px auto 0;
 }
 
-/* Resources Hero Styles */
+
 .resources-hero-title {
   font-family: 'CustomClubFont', sans-serif;
   font-size: 3.5rem;
@@ -2245,7 +2245,7 @@ img {
   margin: 10px auto 0;
 }
 
-/* Blogs Hero Styles */
+
 .blogs-hero-title {
   font-family: 'CustomClubFont', sans-serif;
   font-size: 4rem;
@@ -2271,7 +2271,7 @@ img {
   line-height: 1.6;
 }
 
-/* --- Article cards (list) --- */
+
 .article-card {
   position: relative;
   isolation: isolate;
@@ -2301,7 +2301,7 @@ img {
   }
 }
 
-/* Cursor-tracked spotlight. */
+
 .article-card__sheen {
   position: absolute;
   inset: 0;
@@ -2418,7 +2418,7 @@ img {
   gap: 0.65rem;
 }
 
-/* Animated Blobs */
+
 .blob {
   position: absolute;
   border-radius: 50%;
@@ -2451,7 +2451,7 @@ img {
   to { transform: translate(-80px, -40px) scale(0.8); }
 }
 
-/* Main Content Layout */
+
 .contact-main-content {
   display: flex;
   gap: 40px;
@@ -2466,7 +2466,7 @@ img {
     flex-direction: row;
   }
 }
-/* Contact Form */
+
 .contact-form-card {
   flex: 2;
   background-color: rgba(23, 23, 23, 0.8);
@@ -2534,7 +2534,7 @@ img {
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
 }
 
-/* Form Success State */
+
 .form-success-state {
   text-align: center;
   padding: 40px 0;
@@ -2546,7 +2546,7 @@ img {
 @keyframes scale { 0%, 100% { transform: none; } 50% { transform: scale3d(1.1, 1.1, 1); } }
 @keyframes fill { 100% { box-shadow: inset 0px 0px 0px 40px #27ca3f; } }
 
-/* Alternative Contacts */
+
 .alternative-contacts {
   flex: 1;
 }
@@ -2565,7 +2565,7 @@ img {
 .social-icon.twitter:hover { background: #1DA1F2; }
 .social-icon.linkedin:hover { background: #0A66C2; }
 
-/* FAQ Section */
+
 .faq-section {
   max-width: 800px;
   margin: 0 auto 100px;
@@ -2616,7 +2616,7 @@ img {
 .faq-answer p { padding: 0 4px 22px; color: #a0a0a0; line-height: 1.7; }
 .faq-answer.open { max-height: 1400px; }
 
-/* Final CTA */
+
 .final-cta {
   text-align: center;
   position: relative;
@@ -2627,7 +2627,7 @@ img {
   margin-bottom: 20px;
 }
 
-/* Responsive Adjustments */
+
 @media (max-width: 768px) {
   .contact-main-content {
     flex-direction: column;
@@ -2637,10 +2637,10 @@ img {
   }
 }
 
-/* navbar — full-width transparent bar, fixed to the top on every viewport.
-   Floats over the page: heroes stay full-bleed and run edge to edge behind
-   it. Sits above the menu drawer (z-index 1100) so it and its toggle stay
-   reachable while the drawer is open. */
+
+
+
+
 :root {
   --navbar-h: calc(70px + env(safe-area-inset-top));
 }
@@ -2654,27 +2654,27 @@ img {
   padding: calc(env(safe-area-inset-top) + 14px) clamp(1rem, 4vw, 2.5rem) 0;
   z-index: 1200;
   display: grid;
-  /* Equal 1fr side columns keep the link group optically centred regardless
-     of how wide the logo or the toggle are. */
+  
+
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 1rem;
-  /* No colour of its own, no divider — the bar is only its contents. */
+  
   background: transparent;
   border-bottom: none;
-  /* Blends the whole bar against whatever is painted beneath it, so the white
-     text inverts over bright content with no scroll-state tracking.
-     Applied to the <nav> itself, not its children: a child would blend against
-     this element's own (transparent) background and show no effect at all.
-     Note `difference` with black is identity — on the black sections nothing
-     changes; the inversion only shows over light or mid-tone areas. */
+  
+
+
+
+
+
   mix-blend-mode: difference;
 }
 
-/* Rendered outside the <nav>, so it is not swept up by the bar's difference
-   blend. Mirrors the bar's geometry (same top offset, same horizontal padding,
-   same 70px content band) rather than inheriting it. Same z-index as the bar,
-   later in the DOM, so it paints — and hit-tests — above it. */
+
+
+
+
 .navbar_logo-link {
   position: fixed;
   top: calc(env(safe-area-inset-top) + 34px);
@@ -2685,8 +2685,8 @@ img {
   height: calc(var(--navbar-h) - env(safe-area-inset-top));
 }
 
-/* Stands in for the logo inside the bar, holding the grid's first column so
-   the centred link group does not shift. */
+
+
 .navbar_logo-slot {
   justify-self: start;
 }
@@ -2697,7 +2697,7 @@ img {
   width: auto;
 }
 
-/* Centred link group — borderless, white text, blue underline on hover. */
+
 .navbar_links {
   justify-self: center;
   display: flex;
@@ -2722,7 +2722,7 @@ img {
   white-space: nowrap;
 }
 
-/* Blue underline, grown from the centre outwards. */
+
 .navbar_link::after {
   content: "";
   position: absolute;
@@ -2747,12 +2747,12 @@ img {
   outline-offset: 4px;
 }
 
-/* Below 769px the full link group no longer fits the centred bar; it becomes a
-   horizontally scrollable strip instead of collapsing behind a hamburger. */
+
+
 @media (max-width: 768px) {
   .navbar_about {
     grid-template-columns: 1fr;
-    /* Clear the logo, which is fixed to the left edge outside the bar. */
+    
     padding-left: 5.5rem;
   }
 
@@ -2785,7 +2785,7 @@ img {
 }
 
 
-/* Loading */
+
 .loading {
   display: flex;
   justify-content: center;
@@ -2795,18 +2795,18 @@ img {
   color: #00ff00;
 }
 
-/* Terminal Page Container */
+
 .terminal-page-container {
-  /* display: flex; */
+  
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Use min-height for better mobile */
+  min-height: 100vh; 
   background-color: #000;
 }
 
-/* Terminal */
 
-/* Kali Terminal — blackish green: near-black ground with a green cast. */
+
+
 .kali-terminal {
   position: relative;
   background:
@@ -2814,16 +2814,16 @@ img {
     linear-gradient(180deg, #040a05 0%, #000000 100%);
   color: #00e000;
   font-family: 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace;
-  flex-grow: 1; /* Let the terminal fill the remaining space */
+  flex-grow: 1; 
   overflow: hidden;
-  padding-top: 70px; /* Add space for the fixed navbar */
+  padding-top: 70px; 
   display: flex;
   flex-direction: column;
   text-align: left;
-  font-size: 0.875rem; /* Smaller text on mobile */
+  font-size: 0.875rem; 
 }
 
-/* Subtle CRT scanlines over the whole terminal. */
+
 .kali-terminal::before {
   content: '';
   position: absolute;
@@ -2843,7 +2843,7 @@ img {
   }
 }
 
-/* Matrix Effect Styles */
+
 .matrix-overlay {
   position: fixed;
   top: 0;
@@ -2896,7 +2896,7 @@ img {
   }
 }
 
-/* Aquarium Effect Styles */
+
 .aquarium-overlay {
   position: fixed;
   top: 0;
@@ -3005,7 +3005,7 @@ img {
   overflow-y: auto;
 }
 
-/* Branded welcome: the VOID wordmark and a small system-info block. */
+
 .terminal-welcome {
   margin-bottom: 1.75rem;
   padding-bottom: 1.75rem;
@@ -3115,7 +3115,7 @@ img {
   margin-left: 0.5rem;
 }
 
-/* Hints pinned to the bottom of the window. */
+
 .terminal-statusbar {
   position: relative;
   z-index: 4;
@@ -3158,21 +3158,21 @@ img {
   color: #00ff00;
   font-family: monospace;
 }
-/* Wrapper */
+
 .resources-wrapper {
   min-height: 100vh;
   padding-top: 6rem;
   padding-bottom: 3rem;
 }
 
-/* Container */
+
 .resources-container {
   max-width: 80rem;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-/* Header */
+
 .header-section {
   text-align: center;
   margin-bottom: 4rem;
@@ -3186,19 +3186,19 @@ img {
 
 .header-subtitle {
   font-size: 1.25rem;
-  color: #6b7280; /* muted foreground */
+  color: #6b7280; 
   max-width: 48rem;
   margin: 0 auto;
 }
 
-/* Gradient Text */
+
 .gradient-text {
   background: linear-gradient(90deg, #00f6ff, #00d4ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Featured Section */
+
 .featured-section {
   margin-bottom: 4rem;
 }
@@ -3254,7 +3254,7 @@ img {
   font-weight: 500;
 }
 
-/* Download Button */
+
 .download-btn {
   display: flex;
   align-items: center;
@@ -3266,7 +3266,7 @@ img {
   margin-right: 0.5rem;
 }
 
-/* Categories Section */
+
 .categories-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -3319,9 +3319,9 @@ img {
   font-weight: 700;
 }
 
-/* Resource Items */
 
-/* InfiniteMenu popup card entrance */
+
+
 @keyframes void-popup-in {
   from {
     opacity: 0;
@@ -3333,14 +3333,14 @@ img {
   }
 }
 
-/* === HaosShowcase (Tech Solutions Hero) === */
+
 .haos-container {
   position: relative;
   width: 100%;
-  /* Fills the viewport; the fixed navbar floats over the top of it. */
+  
   min-height: 100vh;
   display: grid;
-  /* The divider sits left of centre so the particle "VOID" gets the wider half. */
+  
   grid-template-columns: 1fr 1fr 2fr;
   grid-template-rows: minmax(0, 1fr);
   gap: 1px;
@@ -3357,16 +3357,16 @@ img {
   pointer-events: none;
 }
 
-/* Monochrome treatment for the CPPN shader.
-   The shader emits saturated colour and `hueShift` only rotates that colour
-   around the YIQ chroma plane — it preserves saturation, so no hue value can
-   ever produce grey. Desaturating is a separate operation, done here. */
+
+
+
+
 .haos-container .bg canvas {
   filter: grayscale(1) brightness(0.72) contrast(1.2);
 }
 
-/* Neutral wash over the shader: a soft grey bloom where the blue one was,
-   then a top-to-bottom ramp into black. */
+
+
 .haos-container .bg::after {
   content: '';
   position: absolute;
@@ -3389,9 +3389,9 @@ img {
 }
 
 .grid-item.main-content { grid-column: 1 / 3; grid-row: 1; justify-content: center; }
-/* The particle wordmark keeps to the right column; ParticleText scales the
-   glyphs to fill it, and the cell's padding is trimmed so the word reads as
-   large as the section allows. */
+
+
+
 .grid-item.center-logo {
   grid-column: 3;
   grid-row: 1;
@@ -3423,9 +3423,9 @@ img {
   margin: 0 0 0.75rem;
 }
 
-/* Each line of the hero title is its own block, inheriting the h1's size (the
-   Shuffle span would otherwise fall back to Tailwind's text-2xl). Kept in the
-   case it is authored in rather than forced uppercase. */
+
+
+
 .main-content h1 .haos-title-line {
   display: block;
   font-size: inherit;
@@ -3441,8 +3441,8 @@ img {
   margin: 0 0 1.5rem;
 }
 
-/* Each subtitle line is its own block and keeps the authored case (Shuffle's
-   base class forces uppercase). */
+
+
 .main-content h2 .haos-subtitle-line {
   display: block;
   font-size: inherit;
@@ -3464,7 +3464,7 @@ img {
   text-transform: uppercase;
 }
 
-/* Shuffle text slots in the hero */
+
 .shuffle-title,
 .shuffle-subtitle {
   text-transform: none;
@@ -3485,8 +3485,8 @@ img {
   .grid-item.center-logo { grid-column: 1; grid-row: auto; padding: 2rem 1rem; }
 }
 
-/* === Register-only landing (register.void-society.in) ===
-   Logo-only header, no site navigation on any viewport. */
+
+
 .register-only-header {
   position: fixed;
   top: 0;
@@ -3499,8 +3499,8 @@ img {
   pointer-events: none;
 }
 
-/* Pin the logo itself to the top-center of the viewport so it never scrolls
-   with the page — do not rely on the header being the containing block. */
+
+
 .register-only-logo {
   position: fixed;
   top: calc(16px + env(safe-area-inset-top));
@@ -3517,12 +3517,12 @@ img {
   }
 }
 
-/* Extra top clearance under the centered logo on the standalone page. */
+
 .register-page--standalone .register-content {
   padding-top: 9rem;
 }
 
-/* === Register Page === */
+
 .register-page {
   position: relative;
   width: 100%;
@@ -3864,7 +3864,7 @@ img {
   box-shadow: 2px 2px 0 #000;
 }
 
-/* Step wizard */
+
 @keyframes reg-step-in {
   from {
     opacity: 0;
@@ -3913,7 +3913,7 @@ img {
   transform: translate(2px, 2px);
 }
 
-/* Success state */
+
 .register-success {
   text-align: center;
   padding: 2.5rem 1rem;
@@ -3934,7 +3934,7 @@ img {
   line-height: 1.6;
 }
 
-/* Closed-registrations state */
+
 .register-closed-card {
   position: relative;
   display: flex;
@@ -3943,7 +3943,7 @@ img {
   min-height: clamp(340px, 52vh, 540px);
   overflow: hidden;
   background-color: rgba(5, 5, 5, 0.9);
-  /* Blue plus-grid texture so the box reads as a filled panel, not empty space. */
+  
   background-image:
     linear-gradient(rgba(59, 130, 246, 0.16) 1px, transparent 1px),
     linear-gradient(90deg, rgba(59, 130, 246, 0.16) 1px, transparent 1px);
@@ -4033,8 +4033,8 @@ img {
   }
 }
 
-/* === Performance === */
-/* Skip rendering below-the-fold sections until they're near the viewport */
+
+
 .irc-section,
 .achievements-section,
 .alumni-section,
@@ -4063,11 +4063,11 @@ img {
 .coming-soon-heading {
   margin-bottom: 1.4rem;
   font-family: "Black Ops One", "CustomClubFont", "Orbitron", system-ui, sans-serif;
-  /* Sized in vw so "COMMUNITY PARTNERS" always fits a single line. */
+  
   font-size: clamp(1.05rem, 4.6vw, 3rem);
   font-weight: 700;
   line-height: 1.25;
-  /* Room for ascenders/descenders so the gradient text never clips. */
+  
   padding: 0.12em 0 0.18em;
   letter-spacing: 0.2em;
   word-spacing: 0.3em;
@@ -4088,7 +4088,7 @@ img {
   -webkit-text-fill-color: transparent;
 }
 
-/* Extra gaps around the N, I and T in "COMMUNITY". */
+
 .coming-soon-heading .cp-wide {
   display: inline-block;
   padding: 0 0.16em;
@@ -4133,7 +4133,7 @@ img {
 }
 
 
-/* --- Cyndia community-partner showcase (home) --- */
+
 .cyndia-showcase {
   display: flex;
   flex-wrap: wrap;
@@ -4144,7 +4144,7 @@ img {
   padding: 0 1.25rem;
 }
 
-/* Centred, symmetric square panel with cursor glow and 3D tilt. */
+
 .cyndia-card {
   position: relative;
   isolation: isolate;
@@ -4178,12 +4178,12 @@ img {
   }
 }
 
-/* Hackitise Labs uses a cool blue accent instead of Cyndia's red. */
+
 .cyndia-card--hackitise {
   --cp-accent: 88, 132, 255;
 }
 
-/* Cursor-following border glow: lights the edge near the pointer. */
+
 .cyndia-card::before {
   content: '';
   position: absolute;
@@ -4206,7 +4206,7 @@ img {
   transition: opacity 0.35s ease;
 }
 
-/* Cursor-tracked spotlight, wide and soft. */
+
 .cyndia-card__spot {
   position: absolute;
   inset: 0;
@@ -4272,8 +4272,8 @@ img {
   }
 }
 
-/* Year dividers inside the team section. A quiet meta-line rather than a
-   heading: the faces below it carry the section. */
+
+
 .team-year-heading {
   margin-top: 4rem;
   margin-bottom: 2.5rem;
@@ -4302,15 +4302,15 @@ img {
 }
 
 
-/* About page. */
+
 .about-page {
   min-height: 100vh;
 }
 
-/* Team page: a plain dark canvas with grouped grids of member cards. */
-/* Team page: dark canvas with a faded blueprint grid. */
+
+
 .team-page {
-  /* Monochrome highlight: bright white lines. */
+  
   --line: rgba(255, 255, 255, 0.75);
   --line-soft: rgba(255, 255, 255, 0.24);
   --glow: rgba(255, 255, 255, 0.38);
@@ -4329,12 +4329,12 @@ img {
   position: absolute;
   inset: 0;
   z-index: -1;
-  /* Horizontal lines carry a mild red, vertical lines a mild blue. */
+  
   background-image:
     linear-gradient(rgba(255, 77, 77, 0.11) 1px, transparent 1px),
     linear-gradient(90deg, rgba(59, 130, 246, 0.14) 1px, transparent 1px);
   background-size: 60px 60px;
-  /* Faded at both side edges so the texture is weakest where it meets them. */
+  
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
   mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
   pointer-events: none;
@@ -4415,13 +4415,13 @@ img {
   box-shadow: 0 0 16px rgba(255, 255, 255, 0.35);
 }
 
-/* Founder and Executive Board carry more weight, so their heading is larger. */
+
 .team-group--lg .team-group__title {
   font-size: clamp(2rem, 5.2vw, 3.9rem);
 }
 
-/* Flex-wrap with a fixed card width so every row — including a short final
-   row — is centred horizontally. */
+
+
 .team-grid {
   display: flex;
   flex-wrap: wrap;
@@ -4462,7 +4462,7 @@ img {
   }
 }
 
-/* Thin accent bar across the top of the card. */
+
 .team-card::after {
   content: '';
   position: absolute;
@@ -4479,7 +4479,7 @@ img {
   transition: width 0.35s ease, opacity 0.35s ease;
 }
 
-/* 1px red-to-blue gradient ring drawn with a mask. */
+
 .team-card::before {
   content: '';
   position: absolute;
@@ -4522,7 +4522,7 @@ img {
   z-index: 1;
 }
 
-/* Portrait only — no frame or highlight alongside the image. */
+
 .team-card__photo {
   position: relative;
   width: 100%;
@@ -4559,7 +4559,7 @@ img {
   color: rgba(255, 255, 255, 0.45);
 }
 
-/* Fixed height so the role line and the LinkedIn button line up across a row. */
+
 .team-card__body {
   display: flex;
   flex-direction: column;
@@ -4592,7 +4592,7 @@ img {
   color: var(--tint);
 }
 
-/* Icon-only LinkedIn button, centred and pinned to the card's bottom. */
+
 .team-card__social {
   display: grid;
   place-items: center;
@@ -4634,13 +4634,13 @@ img {
     padding: 0 1rem;
   }
 
-  /* Uniform compact size on phones, overriding each group's size. */
+  
   .team-card {
     --card: 150px;
   }
 }
 
-/* ================= EVENTS PAGE ================= */
+
 
 .events-page {
   position: relative;
@@ -4650,7 +4650,7 @@ img {
   overflow-x: clip;
 }
 
-/* Fixed 3D field behind the whole page. */
+
 .events-bg {
   position: fixed;
   inset: 0;
@@ -4679,7 +4679,7 @@ img {
     );
 }
 
-/* Hero — vertically centred on the viewport, over the black hole. */
+
 .ev-hero {
   position: relative;
   z-index: 2;
@@ -4704,7 +4704,7 @@ img {
   text-transform: uppercase;
   text-align: center;
   translate: 0 -2.5rem;
-  /* Seamless gradient (same colour at both ends) so the shimmer loops cleanly. */
+  
   background: linear-gradient(
     100deg,
     #8ff0ff 0%,
@@ -4734,13 +4734,13 @@ img {
   }
 }
 
-/* Timeline wrapper + single continuous spine */
+
 .ev-timeline-wrap {
   position: relative;
   z-index: 2;
   padding: 0 clamp(1rem, 5vw, 3rem) clamp(5rem, 10vw, 9rem);
   padding-top: 0;
-  /* Even scrim so the cards read clearly over the moving background. */
+  
   background: rgba(2, 3, 10, 0.64);
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
@@ -4778,7 +4778,7 @@ img {
   }
 }
 
-/* Section headers */
+
 .ev-group + .ev-group {
   margin-top: clamp(4rem, 9vw, 7rem);
 }
@@ -4810,7 +4810,7 @@ img {
   background: linear-gradient(90deg, transparent, rgba(41, 224, 200, 0.7), transparent);
 }
 
-/* Rows */
+
 .ev-timeline {
   position: relative;
   list-style: none;
@@ -4871,8 +4871,8 @@ img {
   background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 75%, transparent), transparent);
 }
 
-/* The upcoming VOID CTF is one centred block — no connector/divider, and its
-   heading, description and CTA are centred. */
+
+
 .ev-row.is-upcoming {
   display: flex;
   flex-direction: column;
@@ -4910,12 +4910,12 @@ img {
   max-width: 560px;
 }
 
-/* Hide the central spine behind the Upcoming group (no divider through it). */
+
 .ev-group:first-child .ev-timeline::before {
   display: none;
 }
 
-/* Only VOID CTF: no "(VIEW PHOTOS)" subheading, bigger text, narrower column. */
+
 .ev-row.is-upcoming .ev-name__hint {
   display: none;
 }
@@ -4932,7 +4932,7 @@ img {
   margin-right: auto;
 }
 
-/* Content floats directly over the 3D — no panel, no box. */
+
 .ev-card {
   position: relative;
   transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
@@ -4971,7 +4971,7 @@ img {
     0 1px 3px rgba(0, 0, 0, 0.9);
 }
 
-/* The title is a link that opens the photo gallery. */
+
 .ev-name__link {
   display: inline-flex;
   align-items: baseline;
@@ -4999,7 +4999,7 @@ img {
   background-size: 100% 1px;
 }
 
-/* Preview photo — sits in the empty column on the far side of the divider. */
+
 .ev-preview {
   position: relative;
   grid-row: 1;
@@ -5061,7 +5061,7 @@ img {
   backdrop-filter: blur(6px);
 }
 
-/* Long titles shrink a touch so they stay on one line. */
+
 .ev-name--long {
   font-size: clamp(1.35rem, 2.8vw, 1.85rem);
 }
@@ -5091,7 +5091,7 @@ img {
   text-shadow: 0 1px 16px rgba(0, 0, 0, 0.92);
 }
 
-/* "Enter the CTF" — a clean gradient link with an animated underline. */
+
 .ev-cta {
   position: relative;
   display: inline-flex;
@@ -5146,11 +5146,11 @@ img {
 .events-footer {
   position: relative;
   z-index: 2;
-  /* Blend the scrim into a solid base so there's no transparent gap at the end. */
+  
   background: linear-gradient(180deg, rgba(2, 3, 10, 0.64) 0%, #01020a 10%);
 }
 
-/* --- Responsive: single left-aligned spine --- */
+
 @media (max-width: 900px) {
   .ev-timeline::before {
     left: 0.5rem;
@@ -5194,7 +5194,7 @@ img {
   }
 }
 
-/* --- Photo gallery modal --- */
+
 .ev-gallery {
   position: fixed;
   inset: 0;
@@ -5223,7 +5223,7 @@ img {
   overflow-y: auto;
   padding: clamp(1rem, 2.5vw, 1.6rem);
   border-radius: 18px;
-  /* Transparent boundary: a faint border + very light glass, not a black box. */
+  
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(8, 12, 20, 0.28);
   -webkit-backdrop-filter: blur(6px);
@@ -5266,8 +5266,8 @@ img {
   opacity: 1;
 }
 
-/* Slider: one large photo at a time, with arrows, counter, thumbnails and
-   swipe support so photos that overflow the frame can be viewed. */
+
+
 .ev-slider {
   position: relative;
 }
@@ -5284,7 +5284,7 @@ img {
   cursor: grab;
 }
 
-/* Hugs the image; arrows sit in the gutters on either side. */
+
 .ev-slider__frame {
   position: relative;
   display: inline-flex;
@@ -5392,7 +5392,7 @@ img {
   color: #93a4bd;
 }
 
-/* About page: registration closed, styled like the old register card. */
+
 .about-register-cta {
   display: flex;
   justify-content: center;
@@ -5407,7 +5407,7 @@ img {
   box-shadow: 0 40px 90px -50px rgba(0, 0, 0, 1);
 }
 
-/* ================= RESOURCES PAGE ================= */
+
 
 .resources-page {
   position: relative;
@@ -5464,7 +5464,7 @@ img {
   padding: 0 clamp(1.25rem, 5vw, 2.5rem);
 }
 
-/* Reveal-on-scroll */
+
 .is-reveal {
   opacity: 0;
   translate: 0 30px;
@@ -5478,7 +5478,7 @@ img {
   translate: 0 0;
 }
 
-/* --- Hero --- */
+
 .res-hero {
   text-align: center;
   margin-bottom: clamp(2.5rem, 6vw, 4rem);
@@ -5516,7 +5516,7 @@ img {
   color: #9fb2cc;
 }
 
-/* --- Explorer (tabs + panel) --- */
+
 .res-explorer {
   position: relative;
   isolation: isolate;
@@ -5525,7 +5525,7 @@ img {
   overflow: hidden;
 }
 
-/* Rotating conic "energy border". */
+
 .res-explorer::before {
   content: '';
   position: absolute;
@@ -5725,7 +5725,7 @@ img {
   background: color-mix(in srgb, var(--accent) 26%, transparent);
 }
 
-/* --- Articles --- */
+
 .res-articles {
   margin-top: clamp(3.5rem, 8vw, 6rem);
 }
@@ -5784,7 +5784,7 @@ img {
   color: #cfd9ea;
 }
 
-/* --- CTA --- */
+
 .res-cta {
   margin: clamp(3rem, 7vw, 5rem) auto 0;
   max-width: 720px;

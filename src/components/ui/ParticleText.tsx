@@ -265,8 +265,8 @@ const ParticleText = ({
       const computed = window.getComputedStyle(container);
       const resolvedFamily = fontFamily === 'inherit' ? computed.fontFamily || 'sans-serif' : fontFamily;
       let resolvedSize = resolveFontSize(fontSize, container, fontWeight, resolvedFamily);
-      // Never let the glyphs be taller than the canvas: clamp to the band height
-      // so the wordmark always fits vertically.
+      
+      
       resolvedSize = Math.min(resolvedSize, Math.max(18, height * 0.82));
       let font = `${fontWeight} ${resolvedSize}px ${resolvedFamily}`;
 

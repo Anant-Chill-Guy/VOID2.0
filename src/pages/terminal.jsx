@@ -3,7 +3,7 @@ import fileService from "./../store/fileService";
 import Navbar from "./../components/navbar";
 import "./../index.css";
 
-// Commands offered by the shell, used for `help` and Tab completion.
+
 const COMMANDS = [
   "help", "ls", "cd", "pwd", "mkdir", "rmdir", "touch", "cat", "nano",
   "echo", "whoami", "date", "clear", "history", "neofetch", "banner",
@@ -21,7 +21,7 @@ const VOID_LOGO = [
 
 const VOID_BANNER = [VOID_LOGO, '', '   //  CYBERSECURITY   ·   VOID SOCIETY'].join('\n');
 
-// Coloured shell prompt: user@host : path $.
+
 const Prompt = ({ authPhase, user, currentPath }) => {
   if (authPhase === 'prompt') {
     return <span className="prompt prompt--auth">Password: </span>;
@@ -40,7 +40,7 @@ function TerminalComponent() {
   const [history, setHistory] = useState([]);
   const [input, setInput] = useState("");
   const [historyIndex, setHistoryIndex] = useState(null);
-  const [authPhase, setAuthPhase] = useState(null); // null | "prompt"
+  const [authPhase, setAuthPhase] = useState(null); 
   const [currentPath, setCurrentPath] = useState("/home/guest");
   const [user, setUser] = useState({ username: "guest" });
   const [isMatrixMode, setIsMatrixMode] = useState(false);
@@ -50,7 +50,7 @@ function TerminalComponent() {
   const aquariumRef = useRef(null);
 
   useEffect(() => {
-    // Set default user and initialize home directory
+    
     setUser({ username: "guest" });
     fileService.createDirectory('/home', 'guest');
   }, []);
@@ -61,7 +61,7 @@ function TerminalComponent() {
     }
   }, [history]);
 
-  // Matrix effect functions
+  
   const startMatrix = () => {
     if (!matrixRef.current) return;
     
@@ -75,17 +75,17 @@ function TerminalComponent() {
     const columns = canvas.width / fontSize;
     const drops = [];
     
-    // Initialize drops
+    
     for (let i = 0; i < columns; i++) {
       drops[i] = 1;
     }
     
     const draw = () => {
-      // Black background with fade effect
+      
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      // Green text
+      
       ctx.fillStyle = '#00ff00';
       ctx.font = fontSize + 'px monospace';
       
@@ -93,7 +93,7 @@ function TerminalComponent() {
         const text = characters.charAt(Math.floor(Math.random() * characters.length));
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
         
-        // Reset drop to top randomly or when it reaches bottom
+        
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
         }
@@ -103,7 +103,7 @@ function TerminalComponent() {
     
     const matrixInterval = setInterval(draw, 50);
     
-    // Store interval for cleanup
+    
     canvas.matrixInterval = matrixInterval;
   };
   
@@ -114,7 +114,7 @@ function TerminalComponent() {
     }
   };
 
-  // Aquarium effect functions
+  
   const startAquarium = () => {
     if (!aquariumRef.current) return;
     
@@ -127,7 +127,7 @@ function TerminalComponent() {
     const bubbles = [];
     const seaweed = [];
     
-    // Fish types with different ASCII art
+    
     const fishTypes = [
       { art: '><(((*>', color: '#FFD700', size: 12 },
       { art: '<*)))><', color: '#FF6B6B', size: 12 },
@@ -137,7 +137,7 @@ function TerminalComponent() {
       { art: '~><(((º>', color: '#FFEAA7', size: 13 }
     ];
     
-    // Initialize fish
+    
     for (let i = 0; i < 8; i++) {
       const fishType = fishTypes[Math.floor(Math.random() * fishTypes.length)];
       fish.push({
@@ -149,7 +149,7 @@ function TerminalComponent() {
       });
     }
     
-    // Initialize bubbles
+    
     for (let i = 0; i < 15; i++) {
       bubbles.push({
         x: Math.random() * canvas.width,
@@ -159,7 +159,7 @@ function TerminalComponent() {
       });
     }
     
-    // Initialize seaweed
+    
     for (let i = 0; i < 6; i++) {
       const x = Math.random() * canvas.width;
       const height = Math.random() * 100 + 80;
@@ -167,11 +167,11 @@ function TerminalComponent() {
     }
     
     const draw = () => {
-      // Deep blue background
+      
       ctx.fillStyle = '#001122';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      // Draw seaweed
+      
       seaweed.forEach(weed => {
         ctx.strokeStyle = '#2E7D32';
         ctx.lineWidth = 3;
@@ -185,20 +185,20 @@ function TerminalComponent() {
         ctx.stroke();
       });
       
-      // Draw sand/bottom
+      
       ctx.fillStyle = '#8D6E63';
       ctx.fillRect(0, canvas.height - 30, canvas.width, 30);
       
-      // Draw fish
+      
       fish.forEach(f => {
         f.x += f.vx;
         f.y += f.vy;
         
-        // Boundary collision
+        
         if (f.x < -50 || f.x > canvas.width + 50) f.vx *= -1;
         if (f.y < 50 || f.y > canvas.height - 80) f.vy *= -1;
         
-        // Random direction changes
+        
         if (Math.random() < 0.01) {
           f.vx += (Math.random() - 0.5) * 0.5;
           f.vy += (Math.random() - 0.5) * 0.2;
@@ -209,7 +209,7 @@ function TerminalComponent() {
         ctx.fillText(f.art, f.x, f.y);
       });
       
-      // Draw bubbles
+      
       bubbles.forEach(bubble => {
         bubble.y += bubble.vy;
         bubble.x += Math.sin(bubble.y * 0.01) * 0.5;
@@ -225,7 +225,7 @@ function TerminalComponent() {
         ctx.fill();
       });
       
-      // Draw water effect lines
+      
       for (let i = 0; i < 5; i++) {
         ctx.strokeStyle = `rgba(64, 196, 255, ${0.1 + Math.sin(Date.now() * 0.001 + i) * 0.05})`;
         ctx.lineWidth = 1;
@@ -247,7 +247,7 @@ function TerminalComponent() {
     }
   };
   
-  // Handle ESC key to exit matrix or aquarium
+  
   useEffect(() => {
     const handleKeyPress = (e) => {
       if (e.key === 'Escape') {
@@ -587,7 +587,7 @@ Updated: ${new Date().toLocaleDateString()}`;
         setTimeout(() => { window.location.href = "/panel-sight"; }, 600);
         return;
       }
-      // Surface the real reason from the server instead of a generic message.
+      
       try {
         const body = await res.json();
         resultLine = body.error || `Error ${res.status}.`;
@@ -651,7 +651,7 @@ Updated: ${new Date().toLocaleDateString()}`;
 
   return (
     <div className="kali-terminal" ref={terminalRef}>
-      {/* Matrix overlay */}
+      {}
       {isMatrixMode && (
         <div className="matrix-overlay">
           <canvas ref={matrixRef} className="matrix-canvas" />
@@ -662,7 +662,7 @@ Updated: ${new Date().toLocaleDateString()}`;
         </div>
       )}
       
-      {/* Aquarium overlay */}
+      {}
       {isAquariumMode && (
         <div className="aquarium-overlay">
           <canvas ref={aquariumRef} className="aquarium-canvas" />

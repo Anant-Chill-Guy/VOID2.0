@@ -1,5 +1,5 @@
-// Cyber-security / CTF articles for the VOID Society site.
-// Each article is rendered on /articles and, via router state, on /articles/:id.
+
+
 
 const h = (text) => `<h2 class="text-2xl font-semibold mt-8 mb-4 text-slate-100">${text}</h2>`;
 const p = (text) => `<p class="mb-4 text-slate-300 leading-relaxed">${text}</p>`;
@@ -26,7 +26,7 @@ const article = ({ intro, sections = [], closing, tip }) =>
   (closing ? p(closing) : '') +
   (tip ? note(tip[0], tip[1]) : '');
 
-// [title, snippet, tags, (unused author slot), date, readTime]
+
 const raw = [
   ['The Five CTF Categories: A Beginner’s Guide', 'Every CTF is built from the same handful of disciplines. Learn what each category expects and how to start solving in it.', ['CTF', 'Methodology', 'Security'], 'Suryansh Deshwal', 'Mar 12, 2026', '10 min read'],
   ['Web Exploitation in CTFs: From SQLi to RCE', 'A tour of the web category — injection, broken auth, file uploads and the chain that turns a small bug into remote code execution.', ['Web', 'SQLi', 'RCE'], 'Abhishek Kumar', 'Mar 02, 2026', '12 min read'],

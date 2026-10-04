@@ -3,13 +3,13 @@ import Navbar from '../components/navbar';
 import Footer from './../components/footer';
 import { upcomingEvents, pastEvents } from '../data/events';
 
-// three.js is heavy, so the ambient scene loads only with this route.
+
 const EventsScene = lazy(() => import('../components/EventsScene'));
 
 const UPCOMING = upcomingEvents.map((event) => ({ ...event, status: 'upcoming' }));
 const PAST = pastEvents.map((event) => ({ ...event, status: 'past' }));
 
-// `order` drives the alternating left/right layout (three on each side).
+
 function EventRow({ event, order, onOpenGallery }) {
   const ref = useRef(null);
   const side = order % 2 === 0 ? 'left' : 'right';
@@ -93,7 +93,7 @@ function EventRow({ event, order, onOpenGallery }) {
         )}
       </article>
 
-      {/* Preview photo on the opposite side of the divider. */}
+      {}
       {event.gallery?.length > 0 && (
         <button
           type="button"
@@ -131,7 +131,7 @@ function Gallery({ data, onClose }) {
       window.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [onClose, images.length]);
 
   const onPointerDown = (e) => {

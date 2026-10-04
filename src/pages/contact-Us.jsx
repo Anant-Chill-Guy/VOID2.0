@@ -4,7 +4,7 @@ import Footer from "./../components/footer";
 import './../index.css';
 import emailjs from "emailjs-com";
 
-// ✅ Simple Checkmark SVG for success animation
+
 const CheckmarkIcon = () => (
   <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
     <circle className="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
@@ -12,14 +12,14 @@ const CheckmarkIcon = () => (
   </svg>
 );
 
-// (FAQ moved to a dedicated page: src/pages/FAQ.jsx)
+
 
 export default function ContactUs() {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // FAQ content moved to `src/pages/FAQ.jsx`.
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -38,7 +38,7 @@ export default function ContactUs() {
     return newErrors;
   };
 
-  // ✅ Updated handleSubmit with EmailJS
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const newErrors = validateForm();
@@ -46,14 +46,14 @@ export default function ContactUs() {
       setErrors(newErrors);
     } else {
       emailjs.send(
-        "service_b0p3dvq",     // your Service ID
-        "template_0dcpbqk",    // your Template ID
+        "service_b0p3dvq",     
+        "template_0dcpbqk",    
         {
           name: formState.name,
           email: formState.email,
           message: formState.message,
         },
-        "6CZt7UM5XbvHCqDpF"    // your Public Key
+        "6CZt7UM5XbvHCqDpF"    
       )
       .then(() => {
         setIsSubmitted(true);
@@ -84,7 +84,7 @@ export default function ContactUs() {
         </section>
 
         <div className="contact-main-content">
-          {/* ✅ Contact Form */}
+          {}
           <div className="contact-form-card">
             {isSubmitted ? (
               <div className="form-success-state">
@@ -114,7 +114,6 @@ export default function ContactUs() {
             )}
           </div>
 
-          {/* ✅ Alternative Contact Methods */}
           <div className="alternative-contacts">
             <h3>Other Ways to Connect</h3>
             <div className="contact-method">
@@ -154,7 +153,6 @@ export default function ContactUs() {
 
 
 
-        {/* ✅ Final CTA */}
         <section className="final-cta">
           <h2>Still have questions?</h2>
           <a href="mailto:voidsociety@kiet.edu" className="join-us-button">Let's Connect</a>

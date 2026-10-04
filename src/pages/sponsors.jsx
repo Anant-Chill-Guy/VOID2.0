@@ -4,7 +4,7 @@ import Footer from './../components/footer';
 import './../index.css';
 import hackerdnaLogo from '../assets/Sponsors/hackerdna.png';
 
-// The 3D background pulls in three.js, so it loads with this (already lazy) route.
+
 const SponsorsScene = lazy(() => import('../components/SponsorsScene'));
 
 const SPONSORS = [
@@ -38,7 +38,7 @@ const SPONSORS = [
   },
 ];
 
-// Pointer-tracked 3D tilt so each card leans toward the cursor.
+
 const SponsorCard = ({ name, url, logo, color, soft, index }) => {
   const handleMove = (e) => {
     const el = e.currentTarget;
@@ -80,7 +80,7 @@ export default function Sponsors() {
     <>
       <Navbar />
       <div className="sponsors-page">
-        {/* Fixed 3D background, behind the whole page. */}
+        {}
         <div className="sponsors-bg" aria-hidden="true">
           <Suspense fallback={null}>
             <SponsorsScene />
@@ -88,7 +88,7 @@ export default function Sponsors() {
         </div>
         <div className="sponsors-bg-veil" aria-hidden="true" />
 
-        {/* Hero heading */}
+        {}
         <header className="sponsors-hero">
           <h1 className="sponsors-hero__title">
             <span>Our</span>
@@ -96,7 +96,7 @@ export default function Sponsors() {
           </h1>
         </header>
 
-        {/* Huge gap, then a dark shade (like events) covering to the page end. */}
+        {}
         <section className="sponsors-list-wrap">
           <div className="sponsors-grid">
             {SPONSORS.map((s, i) => (
