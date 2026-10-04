@@ -77,11 +77,13 @@ function GlobeRing({ radius, tilt, color, opacity, tube, speed, count = 4, shape
     const g = shapes.current;
     if (!g) return;
     const t = state.clock.elapsedTime * speed;
+    // The torus lies in the XY plane, so the shapes orbit in XY too — that puts
+    // each "planet" directly on the ring (its orbit) while it spins on its axle.
     g.children.forEach((child, i) => {
       const a = t + (i / count) * Math.PI * 2;
-      child.position.set(Math.cos(a) * radius, 0, Math.sin(a) * radius);
-      child.rotation.y = t * 1.4 + i;
-      child.rotation.x = t * 0.8;
+      child.position.set(Math.cos(a) * radius, Math.sin(a) * radius, 0);
+      child.rotation.x = t * 1.1 + i;
+      child.rotation.y = t * 0.9 + i;
     });
   });
 
@@ -129,7 +131,7 @@ function Globe({ radius = 8.5 }) {
       {/* Globe body — low-detail wireframe so it reads light, not dense. */}
       <group ref={ref}>
         <mesh>
-          <icosahedronGeometry args={[radius, 2]} />
+          <icosahedronGeometry args={[radius, 1]} />
           <meshBasicMaterial color="#8fb8ff" wireframe transparent opacity={0.7} toneMapped={false} />
         </mesh>
 
@@ -187,7 +189,7 @@ function Shapes() {
   return (
     <>
       <Globe radius={8.5} />
-      <Sparkles count={isLowPower() ? 80 : 140} scale={[50, 30, 30]} size={2.2} speed={0.3} opacity={0.75} color="#9fc4ff" />
+      <Sparkles count={isLowPower() ? 50 : 90} scale={[50, 30, 30]} size={2.2} speed={0.3} opacity={0.75} color="#9fc4ff" />
     </>
   );
 }
@@ -197,7 +199,7 @@ function Galaxy() {
   const ref = useRef(null);
 
   const geometry = useMemo(() => {
-    const count = isLowPower() ? 1800 : 3200;
+    const count = isLowPower() ? 1400 : 2200;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
     const c = new THREE.Color();
@@ -264,8 +266,8 @@ export default function SponsorsScene() {
         <Stage>
           <Shapes />
         </Stage>
-        <Stars radius={320} depth={200} count={isLowPower() ? 3500 : 6000} factor={6} saturation={0} fade speed={0.5} />
-        <Stars radius={150} depth={90} count={isLowPower() ? 1200 : 2500} factor={4} saturation={0} fade speed={0.8} />
+        <Stars radius={320} depth={200} count={isLowPower() ? 2200 : 3800} factor={6} saturation={0} fade speed={0.5} />
+        <Stars radius={150} depth={90} count={isLowPower() ? 800 : 1600} factor={4} saturation={0} fade speed={0.8} />
       </Suspense>
     </Canvas>
   );

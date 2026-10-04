@@ -10,6 +10,10 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    // three.js (~900 kB) is a lazy route chunk; warn only above it.
+    chunkSizeWarningLimit: 1000,
+  },
   server: {
     host: true, // listen on all interfaces
     port: 5173,

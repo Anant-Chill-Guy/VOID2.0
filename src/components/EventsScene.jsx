@@ -199,7 +199,7 @@ function PullStreaks() {
 
   const streaks = useMemo(
     () =>
-      Array.from({ length: isLowPower() ? 8 : 14 }, () => ({
+      Array.from({ length: isLowPower() ? 6 : 10 }, () => ({
         angle: Math.random() * Math.PI * 2,
         length: DISK * (1.5 + Math.random() * 2),
         width: DISK * (0.4 + Math.random() * 0.6),
@@ -233,7 +233,7 @@ function BlackHole() {
   const lensingTexture = useLensingTexture();
 
   const diskGeometry = useMemo(() => {
-    const count = isLowPower() ? 2200 : 5000;
+    const count = isLowPower() ? 1600 : 3400;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
     const hot = new THREE.Color('#fff3d6');
@@ -339,11 +339,11 @@ function BlackHole() {
         </group>
 
         <mesh rotation={[Math.PI / 2, 0, 0]}>
-          <torusGeometry args={[SPHERE * 1.1, 0.09, 16, 240]} />
+          <torusGeometry args={[SPHERE * 1.1, 0.09, 12, 160]} />
           <meshBasicMaterial color="#fff4dc" toneMapped={false} />
         </mesh>
         <mesh rotation={[Math.PI / 2, 0, 0]}>
-          <torusGeometry args={[SPHERE * 1.34, 0.045, 16, 240]} />
+          <torusGeometry args={[SPHERE * 1.34, 0.045, 12, 160]} />
           <meshBasicMaterial
             color="#ffab5e"
             transparent
@@ -354,7 +354,7 @@ function BlackHole() {
         </mesh>
 
         <mesh>
-          <sphereGeometry args={[SPHERE, 64, 64]} />
+          <sphereGeometry args={[SPHERE, 40, 40]} />
           <meshBasicMaterial color="#000000" />
         </mesh>
       </group>
@@ -367,7 +367,7 @@ function Galaxy() {
   const ref = useRef(null);
 
   const geometry = useMemo(() => {
-    const count = isLowPower() ? 1800 : 3200;
+    const count = isLowPower() ? 1400 : 2400;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
     const c = new THREE.Color();
@@ -504,10 +504,11 @@ export default function EventsScene() {
           <BlackHole />
         </Rig>
 
-        <Stars radius={300} depth={170} count={isLowPower() ? 2800 : 5000} factor={4} saturation={0} fade speed={1.4} />
+        <Stars radius={300} depth={170} count={isLowPower() ? 1800 : 3200} factor={4} saturation={0} fade speed={1.4} />
       </Suspense>
 
-      {!reduced && (
+      {/* Bloom is the heaviest pass — skip it on phones/reduced-motion. */}
+      {!isLowPower() && (
         <EffectComposer disableNormalPass multisampling={0}>
           <Bloom
             intensity={1.45}
