@@ -131,7 +131,8 @@ function Globe({ radius = 8.5 }) {
       {/* Globe body — low-detail wireframe so it reads light, not dense. */}
       <group ref={ref}>
         <mesh>
-          <icosahedronGeometry args={[radius, 1]} />
+          {/* Latitude/longitude wireframe — clearly a globe, still low-density. */}
+          <sphereGeometry args={[radius, 28, 18]} />
           <meshBasicMaterial color="#8fb8ff" wireframe transparent opacity={0.7} toneMapped={false} />
         </mesh>
 
