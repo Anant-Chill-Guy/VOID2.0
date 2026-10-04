@@ -130,7 +130,7 @@ function Globe({ radius = 8.5 }) {
         <mesh>
           {/* Triangular geodesic grid — denser so it reads as a round sphere. */}
           <icosahedronGeometry args={[radius, 3]} />
-          <meshBasicMaterial color="#8fb8ff" wireframe transparent opacity={0.7} toneMapped={false} />
+          <meshBasicMaterial color="#ffffff" wireframe transparent opacity={0.8} toneMapped={false} />
         </mesh>
 
         {/* Pulsing atmosphere. */}
@@ -149,7 +149,7 @@ function Globe({ radius = 8.5 }) {
       {/* Each ring is an orbit for same-coloured shapes (red shape ↔ red ring). */}
       <group ref={rings}>
         <GlobeRing
-          radius={radius * 1.18}
+          radius={radius * 1.08}
           tilt={[Math.PI / 2, 0.18, 0.06]}
           color="#9fc0ff"
           opacity={0.85}
@@ -159,7 +159,7 @@ function Globe({ radius = 8.5 }) {
           shapeSize={0.62}
         />
         <GlobeRing
-          radius={radius * 1.38}
+          radius={radius * 1.22}
           tilt={[Math.PI / 2.45, 0.72, -0.22]}
           color="#ff6b86"
           opacity={0.7}
@@ -169,7 +169,7 @@ function Globe({ radius = 8.5 }) {
           shapeSize={0.52}
         />
         <GlobeRing
-          radius={radius * 1.58}
+          radius={radius * 1.36}
           tilt={[Math.PI / 1.75, -0.52, 0.36]}
           color="#7fe9ff"
           opacity={0.6}
