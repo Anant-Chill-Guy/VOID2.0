@@ -135,7 +135,6 @@ export default function Team() {
       <Navbar />
       <div className="about-us-page team-page">
         <header className="team-header">
-          <p className="team-header__kicker">// VOID SOCIETY</p>
           <h1 className="team-header__title">The Team</h1>
           <p className="team-header__sub">The minds behind the void</p>
         </header>

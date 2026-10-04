@@ -15,14 +15,14 @@ export default function Blogs() {
           <div className="border-b border-slate-700 pb-8 mb-8 text-center">
             <h1 className="blogs-hero-title">Articles</h1>
             <p className="blogs-hero-subtitle">
-              Cyber security write-ups, CTF breakdowns and field notes from the VOID Society.
+              Cyber security write-ups, CTF breakdowns and notes from the VOID Society.
             </p>
           </div>
 
           {/* Blog Post List */}
           <div className="space-y-12">
-            {blogPosts.map((post) => (
-              <BlogPostCard key={post.id} post={post} />
+            {blogPosts.map((post, i) => (
+              <BlogPostCard key={post.id} post={post} index={i} />
             ))}
           </div>
         </main>

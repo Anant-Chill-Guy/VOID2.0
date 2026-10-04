@@ -79,7 +79,7 @@ export default function ContactUs() {
         <div className="blob blob2"></div>
 
         <section className="contact-hero">
-          <h1 className="contact-hero-title">We’d Love to Hear From You</h1>
+          <h1 className="contact-hero-title">Contact Us</h1>
           <p className="contact-hero-subtitle">Whether you have a question, feedback, or just want to say hi, our team is ready to answer all your questions.</p>
         </section>
 

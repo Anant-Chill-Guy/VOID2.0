@@ -5,11 +5,9 @@ import GridPulse from '../components/GridPulse/GridPulse';
 import Navbar from '../components/navbar';
 import './../index.css';
 import Footer from "./../components/footer";
-// The intro plays once per browser session — navigating away and back to About
-// later in the same tab should not re-run it.
+// The intro plays once per browser session — the first time About is opened.
 const PRELOADER_SEEN_KEY = 'void:about-preloader-seen';
 
-// sessionStorage throws in some privacy modes; fall back to playing the intro.
 const hasSeenPreloader = () => {
   try {
     return sessionStorage.getItem(PRELOADER_SEEN_KEY) === '1';
@@ -22,7 +20,7 @@ const markPreloaderSeen = () => {
   try {
     sessionStorage.setItem(PRELOADER_SEEN_KEY, '1');
   } catch {
-    // Best-effort only: without storage the intro simply replays.
+    // Best-effort only.
   }
 };
 
@@ -95,7 +93,7 @@ const FeatureIcon = ({ name }) => (
   </svg>
 );
 
-const FeatureCard = ({ icon, tag, title, description, index, accent }) => {
+const FeatureCard = ({ icon, title, description, accent }) => {
   // Pointer-tracked 3D tilt; the card stays flat without a pointer.
   const handleMove = (e) => {
     const el = e.currentTarget;
@@ -115,19 +113,14 @@ const FeatureCard = ({ icon, tag, title, description, index, accent }) => {
   return (
     <article
       className="feature-card"
-      style={{ '--i': index, '--accent': accent }}
+      style={{ '--accent': accent }}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
     >
-      <span className="feature-card__index" aria-hidden="true">
-        {String(index + 1).padStart(2, '0')}
-      </span>
-
       <div className="feature-icon">
         <FeatureIcon name={icon} />
       </div>
 
-      <p className="feature-card__tag">{tag}</p>
       <h3 className="feature-title">{title}</h3>
       <p className="feature-card__body">{description}</p>
     </article>
@@ -190,9 +183,9 @@ export default function AboutUs() {
   const featuresHeaderRef = useAnimateOnScroll({ threshold: 0.5, triggerOnce: true });
 
   const features = [
-    { icon: 'reticle', accent: '#4da3ff', tag: '// offense + defense', title: 'CTF Challenges', description: 'Engage in real-world scenarios and sharpen your offensive and defensive security skills.' },
-    { icon: 'terminal', accent: '#22d3ee', tag: '// training', title: 'Workshops & Training', description: 'Learn from industry experts through hands-on workshops on the latest tools and techniques.' },
-    { icon: 'network', accent: '#a78bfa', tag: '// network', title: 'Community & Networking', description: 'Connect with peers, mentors, and professionals in the cybersecurity field.' }
+    { icon: 'reticle', accent: '#4da3ff', title: 'CTF Challenges', description: 'Engage in real-world scenarios and sharpen your offensive and defensive security skills.' },
+    { icon: 'terminal', accent: '#22d3ee', title: 'Workshops & Training', description: 'Learn from industry experts through hands-on workshops on the latest tools and techniques.' },
+    { icon: 'network', accent: '#a78bfa', title: 'Community & Networking', description: 'Connect with peers, mentors, and professionals in the cybersecurity field.' }
   ];
 
   return (
@@ -243,8 +236,25 @@ export default function AboutUs() {
           <h2 ref={featuresHeaderRef} className="section-title fade-in-up">What We Do</h2>
           <div className="features-grid">
             {features.map((feature, index) => (
-              <FeatureCard key={index} index={index} {...feature} />
+              <FeatureCard key={index} {...feature} />
             ))}
+          </div>
+        </section>
+
+        {/* Registration closed — styled like the old register page card. */}
+        <section className="about-register-cta">
+          <div className="register-closed-card">
+            <span className="register-closed-card__bracket register-closed-card__bracket--tl" aria-hidden="true" />
+            <span className="register-closed-card__bracket register-closed-card__bracket--tr" aria-hidden="true" />
+            <span className="register-closed-card__bracket register-closed-card__bracket--bl" aria-hidden="true" />
+            <span className="register-closed-card__bracket register-closed-card__bracket--br" aria-hidden="true" />
+            <div className="register-closed">
+              <span className="register-closed__mark" aria-hidden="true">
+                ✕
+              </span>
+              <h2>Registrations are closed</h2>
+              <p>Registrations are over for this year.</p>
+            </div>
           </div>
         </section>
       </div>

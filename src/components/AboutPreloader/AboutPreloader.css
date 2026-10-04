@@ -35,7 +35,7 @@
   align-items: center;
   white-space: pre; /* preserves the trailing space before the caret */
   font-family: 'Fira Code', 'Monaco', 'Consolas', 'Courier New', monospace;
-  font-size: clamp(3rem, 15vw, 13rem);
+  font-size: clamp(2.4rem, 12.5vw, 10.5rem);
   font-weight: 600;
   letter-spacing: 0.05em;
   color: #fff;

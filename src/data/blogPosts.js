@@ -28,7 +28,7 @@ const article = ({ intro, sections = [], closing, tip }) =>
 
 // [title, snippet, tags, (unused author slot), date, readTime]
 const raw = [
-  ['The Five CTF Categories: A Field Guide', 'Every CTF is built from the same handful of disciplines. Learn what each category expects and how to start solving in it.', ['CTF', 'Methodology', 'Security'], 'Suryansh Deshwal', 'Mar 12, 2026', '10 min read'],
+  ['The Five CTF Categories: A Beginner’s Guide', 'Every CTF is built from the same handful of disciplines. Learn what each category expects and how to start solving in it.', ['CTF', 'Methodology', 'Security'], 'Suryansh Deshwal', 'Mar 12, 2026', '10 min read'],
   ['Web Exploitation in CTFs: From SQLi to RCE', 'A tour of the web category — injection, broken auth, file uploads and the chain that turns a small bug into remote code execution.', ['Web', 'SQLi', 'RCE'], 'Abhishek Kumar', 'Mar 02, 2026', '12 min read'],
   ['Crypto Challenges: From Classical Ciphers to RSA', 'How to identify the cipher in front of you, then break it — Caesar, XOR, weak RSA and the maths behind each attack.', ['Crypto', 'RSA', 'CTF'], 'Keshav Agarwal', 'Feb 20, 2026', '11 min read'],
   ['Reverse Engineering with Ghidra', 'Load a stripped binary, read the decompiler, and find the check that decides success. Includes a worked key-check example.', ['Reverse Engineering', 'Ghidra', 'CTF'], 'Raj Ojha', 'Feb 10, 2026', '11 min read'],
@@ -43,7 +43,7 @@ const raw = [
 ];
 
 const BODIES = {
-  'The Five CTF Categories: A Field Guide': {
+  'The Five CTF Categories: A Beginner’s Guide': {
     intro: 'Capture The Flag competitions look chaotic from the outside, but almost every challenge belongs to one of five families. Recognising the family is the first step to solving it.',
     sections: [
       { heading: 'Web', body: p('The target is a running website. You look for the bug the developer shipped — injection, broken access control, weak authentication, or a server-side request. Start by mapping every input and every endpoint.') },

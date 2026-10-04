@@ -3,9 +3,9 @@ import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import './AboutPreloader.css';
 
-// Trailing space keeps the caret clear of the T, so the caret itself reads as
-// the "_" in "ABOUT _".
-const TYPE_TEXT = 'ABOUT ';
+// Trailing space keeps the caret clear of the S, so the caret itself reads as
+// the "_" in "ABOUT US _".
+const TYPE_TEXT = 'ABOUT US ';
 
 // Seconds per character. Everything else is derived so the cadence stays put.
 const CHAR_STAGGER = 0.13;

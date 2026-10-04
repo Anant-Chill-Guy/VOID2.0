@@ -286,7 +286,7 @@ const footerLinks = [
       { id: 1, title: "Projects", to: "/achievements" },
       { id: 2, title: "Research", to: "/resources" },
       { id: 3, title: "Labs", to: "/terminal" },
-      { id: 4, title: "Articles", to: "/articles" },
+      { id: 4, title: "Articles", to: "/resources" },
     ],
   },
   {
@@ -343,10 +343,7 @@ export const Component = () => {
       }}
     >
       {/* Soft blend blur at the divider with the section above */}
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-16 backdrop-blur-[2px]"
-        aria-hidden="true"
-      />
+
       <div className="flex flex-col px-10 pb-10 pt-16 md:flex-row md:items-start md:justify-between md:pt-20">
         {/* Brand */}
         <div className="mx-0 flex max-w-xs flex-col items-start justify-start gap-y-5">
