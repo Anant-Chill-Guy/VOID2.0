@@ -1,10 +1,10 @@
-// Serverless proxy: forwards /api/* requests from the Netlify frontend to the
-// backend hosted on Railway. Netlify's static `status = 200` proxy redirects
-// do not support POST (they return 405), so API traffic is proxied through a
-// Netlify Function instead, which forwards the original method and body.
 
-// Normalize BACKEND_URL so it tolerates a bare hostname (no scheme) and a
-// trailing slash, e.g. "void20-production.up.railway.app/" -> "https://void20-production.up.railway.app".
+
+
+
+
+
+
 const rawBackend = process.env.BACKEND_URL || '';
 const BACKEND = rawBackend
   ? rawBackend.replace(/\/+$/, '').replace(/^(?!https?:\/\/)/i, 'https://')
@@ -19,7 +19,7 @@ export const handler = async (event) => {
     };
   }
 
-  // Reconstruct the backend path from the original request path.
+  
   let path = event.path || '/';
   path = path.replace(/^\/api/, '').replace(/^\/\.netlify\/functions\/api/, '');
   const query = event.rawQuery ? `?${event.rawQuery}` : '';
