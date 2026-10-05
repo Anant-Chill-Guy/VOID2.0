@@ -70,7 +70,7 @@ from this layout:
 ### After deploying
 
 ```bash
-curl -s https://<deployment>/api/registrations | jq length
+curl -s -o /dev/null -w '%{http_code}\n' https://<deployment>/api/registrations   # expect 401
 curl -s -o /dev/null -w '%{http_code}\n' -X POST https://<deployment>/api/register \
   -H 'content-type: application/json' -d '{}'    # expect 422
 ```

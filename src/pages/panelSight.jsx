@@ -23,7 +23,14 @@ export default function PanelSight() {
     let active = true;
     (async () => {
       try {
-        const res = await fetch("/api/registrations");
+        const token = sessionStorage.getItem("void_admin_token") || "";
+        const res = await fetch("/api/registrations", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (res.status === 401) {
+          if (active) setLoadError("Session expired. Log in again from the terminal.");
+          return;
+        }
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         if (active) setRegistrations(data);

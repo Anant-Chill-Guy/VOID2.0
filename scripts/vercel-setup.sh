@@ -106,7 +106,7 @@ step "Deploying to production"
 step "Done"
 cat <<'EOF'
   Check the deployment:
-    curl -s https://<your-deployment>/api/registrations | jq length
+    curl -s -o /dev/null -w '%{http_code}\n' https://<your-deployment>/api/registrations   # expect 401
     curl -s -o /dev/null -w '%{http_code}\n' -X POST https://<your-deployment>/api/register \
       -H 'content-type: application/json' -d '{}'      # expect 422
 

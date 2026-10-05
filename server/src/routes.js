@@ -62,7 +62,7 @@ router.post('/admin/login', loginHandler);
 router.get('/admin/verify', requireAdmin, (_req, res) => res.json({ valid: true }));
 
 
-router.get('/registrations', async (_req, res) => {
+router.get('/registrations', requireAdmin, async (_req, res) => {
   try {
     const result = await query(
       `SELECT id, name, branch, year, email, whatsapp, accommodation, domain, domain2, domain3, created_at

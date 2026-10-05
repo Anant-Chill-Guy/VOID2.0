@@ -61,11 +61,7 @@ All routes are mounted under `/api`.
 | POST   | `/api/register`     | public | JSON `{ name, branch, year, email, whatsapp, accommodation, domains[] }`. `@kiet.edu` addresses only. `422` with per-field `errors` on validation failure, `409` on a duplicate email. |
 | POST   | `/api/admin/login`  | public | `{ password }` → `{ token }`. Rate-limited to 5 attempts per IP per 15 minutes. |
 | GET    | `/api/admin/verify` | Bearer | Validates an admin token. |
-| GET    | `/api/registrations`| **public** | Every registration, newest first. |
-
-> `GET /api/registrations` currently has no auth and returns each registrant's name, email
-> and WhatsApp number to anyone who asks. The frontend stores an admin token at login
-> (`terminal.jsx`) but never sends it on this request.
+| GET    | `/api/registrations`| Bearer | Every registration, newest first. `401` without a valid admin token. |
 
 ## Admin panel
 
