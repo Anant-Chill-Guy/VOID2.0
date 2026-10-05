@@ -44,7 +44,6 @@ export default function FAQPage() {
   const [openFaq, setOpenFaq] = useState(null);
 
   const faqs = [
-    { question: 'Do we respond?', answer: 'We typically do not but we would love to.' },
     { question: 'Can I apply for a role here?', answer: 'Absolutely! We are always looking for talented individuals. Please head over to our home page and apply there' },
     { question: 'Do you offer collaboration or partnership opportunities?', answer: 'Yes, we are open to collaborations that align with our mission. Please detail your proposal in the contact form, and our partnership team will get in touch.' },
     {
@@ -56,10 +55,6 @@ export default function FAQPage() {
         'Inter-college competitions — like CyberQuest, Innotech, etc.',
         'Workshops and seminars — focused on cybersecurity awareness and hands-on skills',
       ],
-    },
-    {
-      question: 'What was the Easter Flag?',
-      answer: 'The Easter Flag competition was a small event organized by the VOID Society for attendees of the BreachVerse 3.0 Bootcamp. The winners of this competition were directly advanced to the second round of the recruitment process.'
     },
     { question: 'Can I change my domain after getting selected?', answer: 'Yes, domain change is possible. If you realize your interest lies in another domain you can discuss it with the team. As long as you are ready to learn and show commitment, switching domains is not restricted.' },
     {

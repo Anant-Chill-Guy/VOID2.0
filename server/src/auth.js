@@ -40,13 +40,13 @@ const safeEqual = (a, b) => {
   return crypto.timingSafeEqual(ha, hb);
 };
 
-// Per-IP login rate limiter (5 attempts / 15 min).
+
 const attempts = new Map();
 const RATE_LIMIT = { max: 5, windowMs: 15 * 60 * 1000 };
 
 const rateLimited = (ip) => {
   const now = Date.now();
-  // Lazy prune to keep the map bounded.
+  
   if (attempts.size > 1000) {
     for (const [key, rec] of attempts) {
       if (rec.resetAt < now) attempts.delete(key);

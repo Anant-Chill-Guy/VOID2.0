@@ -3,55 +3,55 @@ import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import './AboutPreloader.css';
 
-// Trailing space keeps the caret clear of the T, so the caret itself reads as
-// the "_" in "ABOUT _".
-const TYPE_TEXT = 'ABOUT ';
 
-// Seconds per character. Everything else is derived so the cadence stays put.
+
+const TYPE_TEXT = 'ABOUT US ';
+
+
 const CHAR_STAGGER = 0.13;
 
 const TIMING = {
-  hold: 0.55, // read pause once the line is complete
+  hold: 0.55, 
   textFade: 0.35,
-  iris: 1.15, // veil opening out to the corners
-  zoom: 1.25, // hero settling out of its zoom
-  tailFade: 0.3, // dissolves any sliver left at the screen corners
+  iris: 1.15, 
+  zoom: 1.25, 
+  tailFade: 0.3, 
 };
 
 const HERO_START_SCALE = 1.22;
 
-// Where the tail fade begins, measured from the start of the iris.
+
 const TAIL_OFFSET = TIMING.iris - TIMING.tailFade - 0.05;
 
-// Radius that clears the viewport corners from the centre.
+
 const viewportRadius = () =>
   Math.hypot(window.innerWidth, window.innerHeight) / 2 + 4;
 
 const prefersReducedMotion = () =>
   window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 
-/**
- * About-page intro. Plays once per mount and calls `onDone` when the live page
- * is fully revealed.
- *
- * @param revealTarget ref to the element the iris zoom scales (the hero). Its
- *   own CSS transitions are suspended for the duration so they cannot damp the
- *   per-frame transform GSAP writes.
- * @param onDone called once the overlay has finished and can be unmounted.
- */
+
+
+
+
+
+
+
+
+
 export default function AboutPreloader({ revealTarget, onDone }) {
   const rootRef = useRef(null);
   const veilRef = useRef(null);
   const lineRef = useRef(null);
   const caretRef = useRef(null);
 
-  // The parent re-creates `onDone` each render; a ref keeps the timeline stable.
+  
   const doneRef = useRef(onDone);
   doneRef.current = onDone;
 
-  // Hold the page still for the duration of the intro. Both locks are lifted
-  // while the page is at scroll position 0, so the unlocked layout is identical
-  // to the pre-lock layout and nothing shifts when the overlay goes away.
+  
+  
+  
   useEffect(() => {
     if (prefersReducedMotion()) {
       doneRef.current?.();
@@ -87,13 +87,13 @@ export default function AboutPreloader({ revealTarget, onDone }) {
       const caret = caretRef.current;
       if (!root || !veil || !line || !caret) return;
 
-      // A plain object stands in when there is no reveal target, so the hero
-      // tweens stay unconditional and simply animate a throwaway holder.
+      
+      
       const hero = revealTarget?.current || {};
 
-      // Hard on/off blink: `steps(1)` toggles instantly instead of fading.
-      // Deliberately not inside the timeline — an infinite child would make
-      // the parent infinite and `onComplete` would never fire.
+      
+      
+      
       gsap.to(caret, {
         opacity: 0,
         duration: 0.5,
@@ -102,8 +102,8 @@ export default function AboutPreloader({ revealTarget, onDone }) {
         yoyo: true,
       });
 
-      // Proxy for the iris radius: the mask reads it back through `--hole`, so
-      // the tween never depends on GSAP parsing a CSS custom property.
+      
+      
       const iris = { r: 0 };
 
       const tl = gsap.timeline({
@@ -112,7 +112,7 @@ export default function AboutPreloader({ revealTarget, onDone }) {
       });
 
       tl
-        // Type the line on, one character at a time.
+        
         .to('.about-preloader__char', {
           opacity: 1,
           duration: 0.01,
@@ -121,9 +121,9 @@ export default function AboutPreloader({ revealTarget, onDone }) {
         })
         .to({}, { duration: TIMING.hold })
         .to(line, { opacity: 0, duration: TIMING.textFade, ease: 'power2.in' })
-        // Open the veil from the centre while the hero settles out of its zoom.
-        // The hero is scaled before the first pixels show, so the page surfaces
-        // already moving rather than snapping to size once visible.
+        
+        
+        
         .set(hero, { scale: HERO_START_SCALE, transformOrigin: '50% 50%' })
         .to(iris, {
           r: viewportRadius,

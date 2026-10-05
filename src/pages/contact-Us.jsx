@@ -4,7 +4,7 @@ import Footer from "./../components/footer";
 import './../index.css';
 import emailjs from "emailjs-com";
 
-// ✅ Simple Checkmark SVG for success animation
+
 const CheckmarkIcon = () => (
   <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
     <circle className="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
@@ -12,14 +12,14 @@ const CheckmarkIcon = () => (
   </svg>
 );
 
-// (FAQ moved to a dedicated page: src/pages/FAQ.jsx)
+
 
 export default function ContactUs() {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // FAQ content moved to `src/pages/FAQ.jsx`.
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -38,7 +38,7 @@ export default function ContactUs() {
     return newErrors;
   };
 
-  // ✅ Updated handleSubmit with EmailJS
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const newErrors = validateForm();
@@ -46,14 +46,14 @@ export default function ContactUs() {
       setErrors(newErrors);
     } else {
       emailjs.send(
-        "service_b0p3dvq",     // your Service ID
-        "template_0dcpbqk",    // your Template ID
+        "service_b0p3dvq",     
+        "template_0dcpbqk",    
         {
           name: formState.name,
           email: formState.email,
           message: formState.message,
         },
-        "6CZt7UM5XbvHCqDpF"    // your Public Key
+        "6CZt7UM5XbvHCqDpF"    
       )
       .then(() => {
         setIsSubmitted(true);
@@ -79,12 +79,12 @@ export default function ContactUs() {
         <div className="blob blob2"></div>
 
         <section className="contact-hero">
-          <h1 className="contact-hero-title">We’d Love to Hear From You</h1>
+          <h1 className="contact-hero-title">Contact Us</h1>
           <p className="contact-hero-subtitle">Whether you have a question, feedback, or just want to say hi, our team is ready to answer all your questions.</p>
         </section>
 
         <div className="contact-main-content">
-          {/* ✅ Contact Form */}
+          {}
           <div className="contact-form-card">
             {isSubmitted ? (
               <div className="form-success-state">
@@ -114,7 +114,6 @@ export default function ContactUs() {
             )}
           </div>
 
-          {/* ✅ Alternative Contact Methods */}
           <div className="alternative-contacts">
             <h3>Other Ways to Connect</h3>
             <div className="contact-method">
@@ -130,7 +129,7 @@ export default function ContactUs() {
             </div>
             <div className="contact-method">
               <strong>Find Us</strong>
-              <p>KIET Groups of institutions, H-Block, COE Cybersecurity</p>
+              <p>KIET Deemed To Be University, H-Block, COE Cybersecurity</p>
               <div className="map-container">
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d403.2578691707484!2d77.49752883465763!3d28.75315361001313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1758773394571!5m2!1sen!2sin" 
@@ -140,7 +139,7 @@ export default function ContactUs() {
                   allowFullScreen="" 
                   loading="lazy" 
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="KIET Groups of Institutions Location"
+                  title="KIET Deemed To Be University Location"
                 ></iframe>
               </div>
             </div>
@@ -154,7 +153,6 @@ export default function ContactUs() {
 
 
 
-        {/* ✅ Final CTA */}
         <section className="final-cta">
           <h2>Still have questions?</h2>
           <a href="mailto:voidsociety@kiet.edu" className="join-us-button">Let's Connect</a>

@@ -3,8 +3,8 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-// Without a boundary any uncaught render/effect error unmounts the whole tree
-// and leaves a blank page. This turns that into a visible, recoverable message.
+
+
 class ErrorBoundary extends Component {
   constructor(props) {
     super(props)

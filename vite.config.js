@@ -10,10 +10,14 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    
+    chunkSizeWarningLimit: 1000,
+  },
   server: {
-    host: true, // listen on all interfaces
+    host: true, 
     port: 5173,
-    // allow Cloudflare Tunnel host
+    
     allowedHosts: [
       'permit-veteran-mysimon-played.trycloudflare.com '
     ],

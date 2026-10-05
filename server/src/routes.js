@@ -5,8 +5,8 @@ import { loginHandler, requireAdmin } from './auth.js';
 
 export const router = Router();
 
-// Parse a preferred-domain list (max 3, ordered). Accepts the legacy single
-// `domain` string so cached older forms still submit a valid request.
+
+
 const parseDomains = (body) => {
   const list = Array.isArray(body.domains)
     ? body.domains
@@ -16,7 +16,7 @@ const parseDomains = (body) => {
   return list.map((d) => String(d).trim()).filter(Boolean);
 };
 
-// Public: submit a registration.
+
 router.post('/register', async (req, res) => {
   const fields = {
     name: (req.body.name || '').trim(),
@@ -57,11 +57,11 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// Admin auth.
+
 router.post('/admin/login', loginHandler);
 router.get('/admin/verify', requireAdmin, (_req, res) => res.json({ valid: true }));
 
-// Public: list all registrations (auth dropped).
+
 router.get('/registrations', async (_req, res) => {
   try {
     const result = await query(

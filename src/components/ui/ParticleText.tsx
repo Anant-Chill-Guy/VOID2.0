@@ -265,6 +265,9 @@ const ParticleText = ({
       const computed = window.getComputedStyle(container);
       const resolvedFamily = fontFamily === 'inherit' ? computed.fontFamily || 'sans-serif' : fontFamily;
       let resolvedSize = resolveFontSize(fontSize, container, fontWeight, resolvedFamily);
+      
+      
+      resolvedSize = Math.min(resolvedSize, Math.max(18, height * 0.82));
       let font = `${fontWeight} ${resolvedSize}px ${resolvedFamily}`;
 
       await waitForFonts(font);
@@ -275,7 +278,7 @@ const ParticleText = ({
       if (!offCtx) return;
 
       const content = String(text || ' ');
-      const maxTextWidth = width * 0.92;
+      const maxTextWidth = width * 0.98;
       offCtx.font = font;
       let metrics = offCtx.measureText(content);
       const measuredWidth = Math.max(1, metrics.width);
